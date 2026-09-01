@@ -6,20 +6,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>إلى روضة</title>
+<title>Roda ✦</title>
 
 <style>
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#08070b;
-    color:#eee;
-    font-family:Tahoma, sans-serif;
+    background:#09090f;
+    color:white;
     overflow-x:hidden;
 }
 
@@ -30,12 +34,41 @@ body::before{
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at 20% 20%,rgba(170,40,90,.18),transparent 30%),
-    radial-gradient(circle at 80% 70%,rgba(100,40,120,.15),transparent 30%);
+    radial-gradient(circle at 20% 20%,#3b123b55,transparent 30%),
+    radial-gradient(circle at 80% 80%,#162d5555,transparent 30%);
     pointer-events:none;
+    z-index:-1;
 }
 
-/* الصفحة الأولى */
+
+/* شريط التنقل */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 30px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    background:#09090fcc;
+    backdrop-filter:blur(15px);
+    z-index:1000;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#e99bc1;
+}
+
+
+/* الصفحة الرئيسية */
 
 .hero{
     min-height:100vh;
@@ -47,56 +80,59 @@ body::before{
 }
 
 .hero-content{
-    max-width:800px;
-    animation:appear 2s ease;
+    animation:fade 1.5s ease;
 }
 
-@keyframes appear{
+@keyframes fade{
+
     from{
         opacity:0;
         transform:translateY(30px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
-.pre-title{
-    color:#c98aa7;
-    letter-spacing:3px;
-    font-size:15px;
+.hero .mini{
+    color:#bd79a1;
+    letter-spacing:4px;
     margin-bottom:25px;
 }
 
 .hero h1{
-    font-size:clamp(60px,13vw,120px);
-    font-weight:400;
-    color:#fff;
-    margin-bottom:20px;
+    font-size:clamp(70px,15vw,140px);
+    font-weight:300;
 }
 
 .hero h1 span{
-    color:#d77a9f;
+    color:#df8fb7;
 }
 
 .hero p{
     color:#aaa;
-    font-size:20px;
+    font-size:19px;
+    margin-top:20px;
     line-height:2;
 }
 
-.scroll{
-    margin-top:60px;
-    color:#777;
-    font-size:14px;
-    animation:bounce 2s infinite;
+.start-btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:15px 35px;
+    border-radius:50px;
+    border:1px solid #bd6792;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
 }
 
-@keyframes bounce{
-    50%{
-        transform:translateY(10px);
-    }
+.start-btn:hover{
+    background:#bd6792;
+    transform:scale(1.05);
 }
 
 
@@ -104,125 +140,207 @@ body::before{
 
 section{
     min-height:80vh;
+    padding:100px 7%;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:100px 25px;
 }
 
 .container{
-    max-width:850px;
     width:100%;
+    max-width:1000px;
 }
 
-.label{
-    color:#c46c91;
-    font-size:14px;
-    letter-spacing:2px;
-    margin-bottom:20px;
+.tag{
+    color:#bd79a1;
+    font-size:13px;
+    letter-spacing:3px;
+    margin-bottom:15px;
 }
 
 .title{
-    font-size:42px;
+    font-size:40px;
     font-weight:400;
-    margin-bottom:35px;
+    margin-bottom:25px;
 }
 
-.text{
-    font-size:20px;
-    line-height:2.2;
-    color:#c8c8c8;
+.description{
+    color:#999;
+    line-height:2;
+}
+
+
+/* التاريخ */
+
+.date-card{
+    margin-top:35px;
+    padding:40px;
+    border-radius:25px;
+    background:#ffffff08;
+    border:1px solid #ffffff12;
+    text-align:center;
+}
+
+.date{
+    font-size:45px;
+    color:#e39abd;
+    margin:15px 0;
+}
+
+.date-text{
+    color:#aaa;
+}
+
+
+/* الأغنية */
+
+.music-box{
+    margin-top:35px;
+    padding:35px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#ffffff08,#ffffff03);
+    border:1px solid #ffffff12;
+    text-align:center;
+}
+
+.music-icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.music-box h3{
+    font-size:25px;
+    font-weight:400;
+}
+
+.music-box p{
+    color:#888;
+    margin-top:10px;
+}
+
+.music-btn{
+    margin-top:25px;
+    padding:13px 30px;
+    border-radius:50px;
+    border:0;
+    background:#d17da5;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
 }
 
 
 /* الشعر */
 
-.poem{
-    border-right:2px solid #a84d76;
-    padding:30px;
-    margin-top:30px;
+.poem-box{
+    margin-top:40px;
+    padding:45px;
+    border-right:2px solid #bd6792;
+    background:#ffffff05;
+    border-radius:15px;
 }
 
-.poem p{
+.poem{
     font-size:23px;
     line-height:2.5;
-    color:#eee;
 }
 
-.poem .signature{
+.poem-author{
+    margin-top:30px;
+    color:#bd79a1;
+}
+
+
+/* العداد */
+
+.counter-box{
     margin-top:35px;
-    color:#a86b84;
-    font-size:15px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
-
-/* كلمة أحبك */
-
-.love-section{
+.counter-item{
+    background:#ffffff08;
+    border:1px solid #ffffff10;
+    border-radius:20px;
+    padding:30px 10px;
     text-align:center;
 }
 
-.love{
-    font-size:clamp(55px,12vw,110px);
-    color:#d77a9f;
-    margin:40px 0;
-    text-shadow:0 0 40px rgba(215,122,159,.35);
+.counter-number{
+    font-size:35px;
+    color:#dd91b5;
 }
 
-.love-sub{
-    color:#999;
-    font-size:18px;
-}
-
-
-/* الرسالة */
-
-.message{
-    background:rgba(255,255,255,.025);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:20px;
-    padding:45px;
-}
-
-.message p{
-    font-size:20px;
-    line-height:2.3;
-    color:#ccc;
+.counter-label{
+    color:#888;
+    margin-top:8px;
 }
 
 
-/* زر الرسالة */
+/* السؤال */
 
-button{
-    margin-top:35px;
-    padding:15px 35px;
-    border-radius:50px;
-    border:1px solid #a95378;
-    background:transparent;
-    color:#eee;
-    font-size:17px;
-    cursor:pointer;
-    transition:.4s;
-}
-
-button:hover{
-    background:#a95378;
-    transform:translateY(-3px);
-}
-
-.hidden{
-    display:none;
-}
-
-.reveal{
+.question{
     margin-top:30px;
     padding:30px;
-    border-radius:15px;
-    background:rgba(170,70,110,.08);
-    color:#ddd;
-    line-height:2.2;
-    font-size:19px;
-    animation:appear 1s ease;
+    background:#ffffff07;
+    border-radius:20px;
+    border:1px solid #ffffff10;
+}
+
+.question h3{
+    font-weight:400;
+    margin-bottom:20px;
+}
+
+.options{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.option{
+    padding:12px 20px;
+    border-radius:30px;
+    border:1px solid #ffffff20;
+    background:transparent;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.option:hover{
+    background:#bd6792;
+}
+
+.answer{
+    display:none;
+    margin-top:20px;
+    color:#df9ebe;
+}
+
+
+/* الرسالة المخفية */
+
+.secret-btn{
+    margin-top:30px;
+    padding:15px 30px;
+    border-radius:50px;
+    background:transparent;
+    border:1px solid #bd6792;
+    color:white;
+    cursor:pointer;
+}
+
+.secret{
+    display:none;
+    margin-top:25px;
+    padding:30px;
+    border-radius:20px;
+    background:#bd679211;
+    color:#ccc;
+    line-height:2;
 }
 
 
@@ -234,55 +352,44 @@ button:hover{
 }
 
 .final h2{
-    font-size:55px;
-    font-weight:400;
-    color:#d77a9f;
-    margin-bottom:30px;
+    font-size:65px;
+    font-weight:300;
+    color:#df91b7;
 }
 
 .final p{
-    max-width:650px;
-    margin:auto;
-    color:#aaa;
-    font-size:20px;
-    line-height:2.3;
-}
-
-.final .small-note{
-    margin-top:50px;
-    color:#666;
-    font-size:14px;
+    margin-top:20px;
+    color:#888;
 }
 
 
-/* خط فاصل */
-
-.line{
-    width:60px;
-    height:1px;
-    background:#a95378;
-    margin:80px auto;
-}
-
-
-/* موبايل */
+/* الموبايل */
 
 @media(max-width:600px){
+
+    nav{
+        gap:15px;
+        padding:15px 10px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    section{
+        padding:80px 5%;
+    }
 
     .title{
         font-size:32px;
     }
 
-    .text{
-        font-size:18px;
+    .counter-box{
+        grid-template-columns:1fr;
     }
 
-    .poem p{
+    .poem{
         font-size:19px;
-    }
-
-    .message{
-        padding:25px;
     }
 
 }
@@ -295,122 +402,163 @@ button:hover{
 <body>
 
 
+<!-- شريط التنقل -->
+
+<nav>
+
+<a href="#start">البداية</a>
+<a href="#first">أول حكي</a>
+<a href="#music-section">الأغنية</a>
+<a href="#poem">الشعر</a>
+<a href="#moments">التفاصيل</a>
+
+</nav>
+
+
 <!-- البداية -->
 
-<section class="hero">
+<section class="hero" id="start">
 
 <div class="hero-content">
 
-<div class="pre-title">
-    رسالة لم تُكتب عبثًا
+<div class="mini">
+    A LITTLE PLACE FOR
 </div>
 
 <h1>
-    إلى <span>روضة</span>
+    <span>R</span>oda
 </h1>
 
 <p>
-    ما عندي صورة إلنا،<br>
-    ولا ذكرى جمعتنا بمكان واحد...<br><br>
-
-    بس عندي شيء واحد متأكد منه:
-    <br>
-    إني أحبك.
+    بعض الأشياء الحلوة إلها مكان خاص.
 </p>
 
-<div class="scroll">
-    ↓ انزلي بهدوء
-</div>
+<a href="#first" class="start-btn">
+    ابدأي ✦
+</a>
 
 </div>
 
 </section>
 
 
+<!-- أول مرة حكينا -->
 
-<!-- الاعتراف -->
-
-<section>
+<section id="first">
 
 <div class="container">
 
-<div class="label">
-    01 — اعتراف
+<div class="tag">
+    01 — FIRST CHAT
 </div>
 
 <h2 class="title">
-    أنا ما خبّيت عليكِ شعوري
+    أول مرة حكينا 💬
 </h2>
 
-<p class="text">
-
-يمكن كان أسهل إلي إني أضل ساكت،
-وأخلي كل شيء بقلبي...
-
-بس أنا اخترت أقولها.
-
-<br><br>
-
-قلتلك "بحبك"
-مش لأني مستني منك كلمة بالمقابل،
-ولا لأني بدي أحطك تحت ضغط.
-
-قلتلك لأنها الحقيقة اللي حسيتها،
-والحقيقة لما تكون صادقة...
-ما بتحتاج سبب حتى تنقال.
-
+<p class="description">
+    كل حكاية إلها بداية...
+    وهذه بداية الحكاية.
 </p>
+
+<div class="date-card">
+
+<div class="date">
+    31 / 12 / 2025
+</div>
+
+<div class="date-text">
+    أول مرة حكينا فيها ❤️
+</div>
+
+</div>
 
 </div>
 
 </section>
 
+
+<!-- الأغنية -->
+
+<section id="music-section">
+
+<div class="container">
+
+<div class="tag">
+    02 — OUR SONG
+</div>
+
+<h2 class="title">
+    أغنية إلها مكانها 🎧
+</h2>
+
+<p class="description">
+    حط هون الأغنية اللي بدك إياها.
+</p>
+
+<div class="music-box">
+
+<div class="music-icon">
+    🎵
+</div>
+
+<h3>
+    أغنيتنا
+</h3>
+
+<p>
+    اضغطي وشغّلي الأغنية
+</p>
+
+<button class="music-btn" onclick="playMusic()">
+    ▶ تشغيل
+</button>
+
+<audio id="music">
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+</div>
+
+</section>
 
 
 <!-- الشعر -->
 
-<section>
+<section id="poem">
 
 <div class="container">
 
-<div class="label">
-    02 — إلى أميرتي
+<div class="tag">
+    03 — POETRY
 </div>
 
 <h2 class="title">
-    كتبتُ لكِ ما عجزتُ عن قوله
+    شيء يشبهكِ
 </h2>
+
+<div class="poem-box">
 
 <div class="poem">
 
-<p>
-
-يا روضةُ، ما الحبُّ عندي حكايةٌ<br>
-تُروى، ولا وعدٌ يُقالُ ويُكتَبُ
+يا روضةُ، يا اسمًا إذا مرَّ بخاطري<br>
+أضاءَ من الذكرى طريقًا في المدى
 
 <br><br>
 
-أحببتُ فيكِ حضورَكِ المتفرّدَ<br>
-حتى غدا قلبي إليكِ يقرّبُ
+ولكِ من الحروفِ قصيدةٌ لا تنتهي<br>
+كلما قلتُ انتهيتُ... أعودُ من ابتدا
 
 <br><br>
 
-ما قلتُ "أحبكِ" كي تقولي مثلها<br>
-فالحبُّ عندي صادقٌ لا يُطلَبُ
+إن كان للجمالِ مكانٌ في الكلام<br>
+فبعضُ الكلامِ حين يُقالُ... يُشبهكِ
 
-<br><br>
+</div>
 
-إن كان قلبُكِ لم يزل متردّدًا<br>
-فأنا سأحترمُ السكوتَ وأرحبُ
-
-<br><br>
-
-يكفينيَ أنكِ حين تمرّين بخاطري<br>
-يصبحُ يومي، رغم كل شيء، أطيبُ
-
-</p>
-
-<div class="signature">
+<div class="poem-author">
     — إلى أميرتي روضة ❤️
 </div>
 
@@ -421,142 +569,112 @@ button:hover{
 </section>
 
 
+<!-- عداد الأيام -->
 
-<!-- كلمة الحب -->
-
-<section class="love-section">
+<section id="moments">
 
 <div class="container">
 
-<div class="label">
-    03 — الكلمة التي تعرفينها
+<div class="tag">
+    04 — TIME
 </div>
 
-<div class="love">
-    أحبك
-</div>
+<h2 class="title">
+    وقديش صار؟ ⏳
+</h2>
 
-<p class="love-sub">
-    بسيطة... بس بالنسبة إلي إلها معنى كبير.
+<p class="description">
+    من أول يوم حكينا لليوم...
 </p>
+
+<div class="counter-box">
+
+<div class="counter-item">
+
+<div class="counter-number" id="days">
+    0
+</div>
+
+<div class="counter-label">
+    يوم
+</div>
+
+</div>
+
+
+<div class="counter-item">
+
+<div class="counter-number" id="hours">
+    0
+</div>
+
+<div class="counter-label">
+    ساعة
+</div>
+
+</div>
+
+
+<div class="counter-item">
+
+<div class="counter-number" id="minutes">
+    0
+</div>
+
+<div class="counter-label">
+    دقيقة
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
 
-
-<!-- لماذا -->
-
-<section>
-
-<div class="container">
-
-<div class="label">
-    04 — لماذا أنتِ؟
-</div>
-
-<h2 class="title">
-    مش لأنك كاملة...
-</h2>
-
-<p class="text">
-
-أنا ما حبيتك لأنك لازم تكوني مثالية.
-
-<br><br>
-
-حبيتك لأنك أنتِ.
-
-<br><br>
-
-بطريقتك بالكلام،
-بطريقتك بالحضور،
-بتفاصيلك اللي يمكن ما تنتبهي إلها،
-وبالأثر اللي بتتركيه فيني بدون ما تحاولي.
-
-<br><br>
-
-وهذا بالنسبة إلي كفاية.
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- الرسالة المخفية -->
+<!-- سؤال تفاعلي -->
 
 <section>
 
 <div class="container">
 
-<div class="label">
-    05 — شيء لم أقله
+<div class="tag">
+    05 — JUST FOR FUN
 </div>
 
 <h2 class="title">
-    افتحيها إذا بدك تعرفي ❤️
+    سؤال صغير 😌
 </h2>
 
-<div class="message">
+<div class="question">
 
-<p>
-في شيء يمكن ما حكيته بطريقة واضحة...
+<h3>
+    شو أكثر شيء بتحبيه؟
+</h3>
 
-<br><br>
+<div class="options">
 
-أنا بعرف إنك لسا ما اعترفتيلي بشعورك،
-وعادي.
-
-أنا ما بدي أستعجل جوابك،
-ولا بدي منك تحكي شيء مش حاسّيته.
-
-<br><br>
-
-إذا قلبك احتاج وقت،
-خديه.
-
-وإذا كان شعورك مختلف،
-رح أحترمه.
-
-<br><br>
-
-بس حبيت تعرفي إن الشخص اللي قالك
-"بحبك"
-كان صادق فيها.
-
-<br><br>
-
-يا عيوني...
-وجودك بحياتي لحاله شيء أنا ممتن إله.
-
-</p>
-
-<button onclick="openMessage()">
-    افتحي الرسالة
+<button class="option" onclick="answer('الضحكة ❤️')">
+    الضحكة
 </button>
 
-<div id="secret" class="hidden">
+<button class="option" onclick="answer('الكلام 🫶')">
+    الكلام
+</button>
 
-    <div class="reveal">
+<button class="option" onclick="answer('التفاصيل ✨')">
+    التفاصيل
+</button>
 
-        وبرضه...
+<button class="option" onclick="answer('كلهم 😭')">
+    كلهم
+</button>
 
-        <br><br>
+</div>
 
-        مهما كان جوابك،
-        رح تظلي عندي إنسانة إلها مكان خاص.
-
-        <br><br>
-
-        — من الشخص اللي بحبك،
-        بدون ما يطلب منك تثبتي شيء. ❤️
-
-    </div>
-
+<div class="answer" id="answer">
 </div>
 
 </div>
@@ -565,6 +683,50 @@ button:hover{
 
 </section>
 
+
+<!-- رسالة مخفية -->
+
+<section>
+
+<div class="container">
+
+<div class="tag">
+    06 — SECRET
+</div>
+
+<h2 class="title">
+    في شيء مخبّى هون 👀
+</h2>
+
+<p class="description">
+    إذا وصلتي لهون... اضغطي.
+</p>
+
+<button class="secret-btn" onclick="showSecret()">
+    افتحي ✦
+</button>
+
+<div class="secret" id="secret">
+
+يا عيوني،
+
+<br><br>
+
+بعض الأشياء الحلوة ما تحتاج كلام كثير...
+
+<br>
+
+يكفي إنها موجودة.
+
+<br><br>
+
+وإنتِ من أحلى التفاصيل. ❤️
+
+</div>
+
+</div>
+
+</section>
 
 
 <!-- النهاية -->
@@ -574,43 +736,12 @@ button:hover{
 <div class="container">
 
 <h2>
-    أميرتي روضة
+    Roda ✦
 </h2>
 
 <p>
-
-يمكن هاي الصفحة ما فيها صور،
-ولا صورنا سوا،
-ولا ذكريات من أماكن رحنا عليها.
-
-<br><br>
-
-لأن قصتنا لسا بتكتب نفسها.
-
-<br><br>
-
-بس فيها شيء واحد حقيقي...
-
-<br>
-
-<strong>
-    اعترافي إلك.
-</strong>
-
-<br><br>
-
-وباقي الحكاية؟
-<br>
-
-خليها للأيام.
-
+    إلى أميرتي، من شخص يحب التفاصيل الحلوة.
 </p>
-
-<div class="line"></div>
-
-<div class="small-note">
-    إلى عيوني... ❤️
-</div>
 
 </div>
 
@@ -620,17 +751,100 @@ button:hover{
 
 <script>
 
-function openMessage(){
 
-    const message = document.getElementById("secret");
+/* تشغيل الأغنية */
 
-    if(message.classList.contains("hidden")){
+function playMusic(){
 
-        message.classList.remove("hidden");
+    const music =
+        document.getElementById("music");
+
+    if(music.paused){
+
+        music.play();
 
     }else{
 
-        message.classList.add("hidden");
+        music.pause();
+
+    }
+
+}
+
+
+/* عداد الأيام */
+
+const firstDate =
+    new Date("2025-12-31T00:00:00");
+
+
+function updateCounter(){
+
+    const now = new Date();
+
+    const difference =
+        now - firstDate;
+
+    const totalMinutes =
+        Math.floor(difference / 60000);
+
+    const days =
+        Math.floor(totalMinutes / 1440);
+
+    const hours =
+        Math.floor((totalMinutes % 1440) / 60);
+
+    const minutes =
+        totalMinutes % 60;
+
+    document.getElementById("days").innerText =
+        days;
+
+    document.getElementById("hours").innerText =
+        hours;
+
+    document.getElementById("minutes").innerText =
+        minutes;
+
+}
+
+updateCounter();
+
+setInterval(updateCounter,60000);
+
+
+/* السؤال التفاعلي */
+
+function answer(text){
+
+    const box =
+        document.getElementById("answer");
+
+    box.innerText =
+        "اختيار حلو... " + text;
+
+    box.style.display =
+        "block";
+
+}
+
+
+/* الرسالة المخفية */
+
+function showSecret(){
+
+    const secret =
+        document.getElementById("secret");
+
+    if(secret.style.display === "block"){
+
+        secret.style.display =
+            "none";
+
+    }else{
+
+        secret.style.display =
+            "block";
 
     }
 
