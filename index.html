@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rawda ✦</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    background:#09090f;
+    color:white;
+    overflow-x:hidden;
+}
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%,#3b123b55,transparent 30%),
+    radial-gradient(circle at 80% 80%,#162d5555,transparent 30%);
+    pointer-events:none;
+    z-index:-1;
+}
+/* شريط التنقل */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 30px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    background:#09090fcc;
+    backdrop-filter:blur(15px);
+    z-index:1000;
+}
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+nav a:hover{
+    color:#e99bc1;
+}
+/* الصفحة الرئيسية */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+}
+.hero-content{
+    animation:fade 1.5s ease;
+}
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.hero .mini{
+    color:#bd79a1;
+    letter-spacing:4px;
+    margin-bottom:25px;
+}
+.hero h1{
+    font-size:clamp(70px,15vw,140px);
+    font-weight:300;
+}
+.hero h1 span{
+    color:#df8fb7;
+}
+.hero p{
+    color:#aaa;
+    font-size:19px;
+    margin-top:20px;
+    line-height:2;
+}
+.start-btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:15px 35px;
+    border-radius:50px;
+    border:1px solid #bd6792;
+    color:white;
+    text-decoration:none;
+    transition:.4s;
+}
+.start-btn:hover{
+    background:#bd6792;
+    transform:scale(1.05);
+}
+/* الأقسام */
+section{
+    min-height:80vh;
+    padding:100px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.container{
+    width:100%;
+    max-width:1000px;
+}
+.tag{
+    color:#bd79a1;
+    font-size:13px;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+.title{
+    font-size:40px;
+    font-weight:400;
+    margin-bottom:25px;
+}
+.description{
+    color:#999;
+    line-height:2;
+}
+/* التاريخ */
+.date-card{
+    margin-top:35px;
+    padding:40px;
+    border-radius:25px;
+    background:#ffffff08;
+    border:1px solid #ffffff12;
+    text-align:center;
+}
+.date{
+    font-size:45px;
+    color:#e39abd;
+    margin:15px 0;
+}
+.date-text{
+    color:#aaa;
+}
+/* الأغنية */
+.music-box{
+    margin-top:35px;
+    padding:35px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#ffffff08,#ffffff03);
+    border:1px solid #ffffff12;
+    text-align:center;
+}
+.music-icon{
+    font-size:55px;
+    margin-bottom:20px;
+}
+.music-box h3{
+    font-size:25px;
+    font-weight:400;
+}
+.music-box p{
+    color:#888;
+    margin-top:10px;
+}
+.music-btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:13px 30px;
+    border-radius:50px;
+    border:0;
+    background:#d17da5;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    text-decoration:none;
+    transition:.3s;
+}
+.music-btn:hover{
+    transform:scale(1.06);
+    background:#bd6792;
+}
+/* الشعر */
+.poem-box{
+    margin-top:40px;
+    padding:45px;
+    border-right:2px solid #bd6792;
+    background:#ffffff05;
+    border-radius:15px;
+}
+.poem{
+    font-size:23px;
+    line-height:2.5;
+}
+.poem-author{
+    margin-top:30px;
+    color:#bd79a1;
+}
+/* العداد */
+.counter-box{
+    margin-top:35px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+.counter-item{
+    background:#ffffff08;
+    border:1px solid #ffffff10;
+    border-radius:20px;
+    padding:30px 10px;
+    text-align:center;
+}
+.counter-number{
+    font-size:35px;
+    color:#dd91b5;
+}
+.counter-label{
+    color:#888;
+    margin-top:8px;
+}
+/* السؤال */
+.question{
+    margin-top:30px;
+    padding:30px;
+    background:#ffffff07;
+    border-radius:20px;
+    border:1px solid #ffffff10;
+}
+.question h3{
+    font-weight:400;
+    margin-bottom:20px;
+}
+.options{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+.option{
+    padding:12px 20px;
+    border-radius:30px;
+    border:1px solid #ffffff20;
+    background:transparent;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+.option:hover{
+    background:#bd6792;
+}
+.answer{
+    display:none;
+    margin-top:20px;
+    color:#df9ebe;
+}
+/* الرسالة المخفية */
+.secret-btn{
+    margin-top:30px;
+    padding:15px 30px;
+    border-radius:50px;
+    background:transparent;
+    border:1px solid #bd6792;
+    color:white;
+    cursor:pointer;
+}
+.secret{
+    display:none;
+    margin-top:25px;
+    padding:30px;
+    border-radius:20px;
+    background:#bd679211;
+    color:#ccc;
+    line-height:2;
+}
+/* النهاية */
+.final{
+    min-height:100vh;
+    text-align:center;
+}
+.final h2{
+    font-size:65px;
+    font-weight:300;
+    color:#df91b7;
+}
+.final p{
+    margin-top:20px;
+    color:#888;
+}
+/* الموبايل */
+@media(max-width:600px){
+    nav{
+        gap:15px;
+        padding:15px 10px;
+    }
+    nav a{
+        font-size:11px;
+    }
+    section{
+        padding:80px 5%;
+    }
+    .title{
+        font-size:32px;
+    }
+    .counter-box{
+        grid-template-columns:1fr;
+    }
+    .poem{
+        font-size:19px;
+    }
+}
+</style>
+</head>
+<body>
+<!-- شريط التنقل -->
+<nav>
+<a href="#start">البداية</a>
+<a href="#first">أول تواصل</a>
+<a href="#music-section">أغنية</a>
+<a href="#poem">قصيدة إهداء للأميرة</a>
+<a href="#moments">التفاصيل</a>
+</nav>
+<!-- البداية -->
+<section class="hero" id="start">
+<div class="hero-content">
+<div class="mini">
+    A LITTLE PLACE FOR
+</div>
+<h1>
+    <span>R</span>awda
+</h1>
+<p>
+    يا أميرتي الحلوة يا أحلى اشي بحياتي
+</p>
+<a href="#first" class="start-btn">
+    ابدأي ✦
+</a>
+</div>
+</section>
+<!-- أول مرة حكينا -->
+<section id="first">
+<div class="container">
+<div class="tag">
+    01 — FIRST CHAT
+</div>
+<h2 class="title">
+    أول مرة حكيت معك، الشات الي غير حياتي
+</h2>
+<p class="description">
+    كل قصة إلها بداية...
+    وهذه بداية الحكاية.
+</p>
+<div class="date-card">
+<div class="date">
+    31 / 12 / 2025
+</div>
+<div class="date-text">
+    أول مرة حكيت مع البرنسس
+</div>
+</div>
+</div>
+</section>
+<!-- الأغنية -->
+<section id="music-section">
+<div class="container">
+<div class="tag">
+    02 — OUR SONG
+</div>
+<h2 class="title">
+    أغنية من محمد إلك 🎵
+</h2>
+<p class="description">
+    أغنية كاظم الساهر — تاريخ ميلادي
+</p>
+<div class="music-box">
+<div class="music-icon">
+    🎵
+</div>
+<h3>
+    تاريخ ميلادي — كاظم الساهر
+</h3>
+<p>
+    شغّلي الأغنية يا أميرتي
+</p>
+<a
+    href="https://www.youtube.com/results?search_query=كاظم+الساهر+تاريخ+ميلادي"
+    target="_blank"
+    class="music-btn"
+>
+    ▶ تشغيل الأغنية
+</a>
+</div>
+</div>
+</section>
+<!-- الشعر -->
+<section id="poem">
+<div class="container">
+<div class="tag">
+    03 — POETRY
+</div>
+<h2 class="title">
+    حكي صغير إلك
+</h2>
+<div class="poem-box">
+<div class="poem">
+يا روضةُ، يا اسمًا إذا مرَّ بخاطري<br>
+أضاءَ من الذكرى طريقًا في المدى
+<br><br>
+ولكِ من الحروفِ قصيدةٌ لا تنتهي<br>
+كلما قلتُ انتهيتُ... أعودُ من ابتدا
+<br><br>
+إن كان للجمالِ مكانٌ في الكلام<br>
+فبعضُ الكلامِ حين يُقالُ... يُشبهكِ
+</div>
+<div class="poem-author">
+    — إلى أميرتي روضة ❤️
+</div>
+</div>
+</div>
+</section>
+<!-- عداد الأيام -->
+<section id="moments">
+<div class="container">
+<div class="tag">
+    04 — TIME
+</div>
+<h2 class="title">
+    وقديش صار؟ ⏳
+</h2>
+<p class="description">
+    من أول يوم حكينا لليوم...
+</p>
+<div class="counter-box">
+<div class="counter-item">
+<div class="counter-number" id="days">
+    0
+</div>
+<div class="counter-label">
+    يوم
+</div>
+</div>
+<div class="counter-item">
+<div class="counter-number" id="hours">
+    0
+</div>
+<div class="counter-label">
+    ساعة
+</div>
+</div>
+<div class="counter-item">
+<div class="counter-number" id="minutes">
+    0
+</div>
+<div class="counter-label">
+    دقيقة
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- سؤال تفاعلي -->
+<section>
+<div class="container">
+<div class="tag">
+    05 — JUST FOR FUN
+</div>
+<h2 class="title">
+    سؤال صغير 😌
+</h2>
+<div class="question">
+<h3>
+    شو أحلى اشي فيكي؟
+</h3>
+<div class="options">
+<button class="option" onclick="answer('الضحكة ❤️')">
+    الضحكة
+</button>
+<button class="option" onclick="answer('العيون 🫶')">
+    العيون
+</button>
+<button class="option" onclick="answer('الشخصية ✨')">
+    الشخصية
+</button>
+<button class="option" onclick="answer('كلهم 😭')">
+    كلهم
+</button>
+</div>
+<div class="answer" id="answer">
+</div>
+</div>
+</div>
+</section>
+<!-- رسالة مخفية -->
+<section>
+<div class="container">
+<div class="tag">
+    06 — SECRET
+</div>
+<h2 class="title">
+    في شيء مخبّى هون 👀
+</h2>
+<p class="description">
+    إذا وصلتي لهون... اضغطي.
+</p>
+<button class="secret-btn" onclick="showSecret()">
+    افتحي ✦
+</button>
+<div class="secret" id="secret">
+يا عيوني،
+<br><br>
+ما بدي أحكي كلام كثير...
+<br>
+بس بكفي وجودك بحياتي.
+<br><br>
+والله ما عمري حلاقي زيك،
+يا برنسس حياتي كلها،
+يا نور حياتي إنتِ.
+<br><br>
+وإنتِ أحلى اشي بحياتي. ❤️
+</div>
+</div>
+</section>
+<!-- النهاية -->
+<section class="final">
+<div class="container">
+<h2>
+    Rawda ✦
+</h2>
+<p>
+    إلى أميرتي، من شخص يحب البرنسس.
+</p>
+</div>
+</section>
+<script>
+/* عداد الأيام */
+const firstDate =
+    new Date("2025-12-31T00:00:00");
+function updateCounter(){
+    const now = new Date();
+    const difference =
+        now - firstDate;
+    const totalMinutes =
+        Math.floor(difference / 60000);
+    const days =
+        Math.floor(totalMinutes / 1440);
+    const hours =
+        Math.floor((totalMinutes % 1440) / 60);
+    const minutes =
+        totalMinutes % 60;
+    document.getElementById("days").innerText =
+        days;
+    document.getElementById("hours").innerText =
+        hours;
+    document.getElementById("minutes").innerText =
+        minutes;
+}
+updateCounter();
+setInterval(updateCounter,60000);
+/* السؤال التفاعلي */
+function answer(text){
+    const box =
+        document.getElementById("answer");
+    box.innerText =
+        "اختيار حلو... " + text;
+    box.style.display =
+        "block";
+}
+/* الرسالة المخفية */
+function showSecret(){
+    const secret =
+        document.getElementById("secret");
+    if(secret.style.display === "block"){
+        secret.style.display =
+            "none";
+    }else{
+        secret.style.display =
+            "block";
+    }
+}
+</script>
+</body>
+</html>
