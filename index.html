@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إلى أميرتي روضة ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Tahoma", sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#12000b,#3b071f,#17000d);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* القلوب */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:20px;
+    animation:float 7s linear infinite;
+    opacity:.7;
+    pointer-events:none;
+}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(0deg);opacity:0}
+    20%{opacity:.8}
+    100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+/* الصفحة الرئيسية */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    position:relative;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.small{
+    color:#ff9ac2;
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:clamp(45px,10vw,90px);
+    margin-bottom:20px;
+    text-shadow:0 0 30px #ff2f75;
+}
+
+.hero p{
+    font-size:22px;
+    line-height:2;
+    color:#ffd9e7;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 35px;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff246b,#ff6b9d);
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    box-shadow:0 0 25px #ff246b;
+    transition:.3s;
+    border:none;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+/* الأقسام */
+section{
+    padding:90px 7%;
+    text-align:center;
+}
+
+.title{
+    font-size:40px;
+    margin-bottom:20px;
+    color:#ff8eb8;
+}
+
+.subtitle{
+    color:#ddd;
+    margin-bottom:45px;
+}
+
+/* رسالة */
+.love-box{
+    max-width:850px;
+    margin:auto;
+    padding:40px;
+    border:1px solid #ff4d88;
+    border-radius:25px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 40px rgba(255,40,110,.15);
+}
+
+.love-box p{
+    font-size:21px;
+    line-height:2.2;
+}
+
+/* الصور */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.photo{
+    height:280px;
+    border-radius:22px;
+    overflow:hidden;
+    background:#260715;
+    border:1px solid #ff4c87;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.photo:hover img{
+    transform:scale(1.08);
+}
+
+/* الأسباب */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    padding:30px 20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,100,150,.4);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,50,110,.12);
+}
+
+.card span{
+    font-size:40px;
+    display:block;
+    margin-bottom:15px;
+}
+
+/* العدّاد */
+.counter{
+    font-size:35px;
+    color:#ff8eb8;
+    margin-top:20px;
+}
+
+/* الرسالة السرية */
+.secret{
+    max-width:700px;
+    margin:auto;
+}
+
+.secret-message{
+    display:none;
+    margin-top:25px;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,40,100,.12);
+    border:1px solid #ff4d87;
+    font-size:21px;
+    line-height:2;
+}
+
+/* النهاية */
+.final{
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.final h2{
+    font-size:55px;
+    color:#ff8eb8;
+    text-shadow:0 0 25px #ff246b;
+}
+
+.final p{
+    max-width:700px;
+    font-size:22px;
+    line-height:2.2;
+    margin-top:20px;
+}
+
+footer{
+    padding:25px;
+    text-align:center;
+    color:#aaa;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+@media(max-width:600px){
+    section{padding:70px 5%}
+    .love-box{padding:25px}
+    .final h2{font-size:40px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- قلوب متحركة -->
+<div class="heart" style="left:10%;animation-delay:0s;">❤️</div>
+<div class="heart" style="left:25%;animation-delay:2s;">💗</div>
+<div class="heart" style="left:45%;animation-delay:4s;">💕</div>
+<div class="heart" style="left:65%;animation-delay:1s;">❤️</div>
+<div class="heart" style="left:85%;animation-delay:3s;">💖</div>
+
+<!-- الرئيسية -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="small">إلى أجمل شخص دخل حياتي ❤️</div>
+
+        <h1>روضة</h1>
+
+        <p>
+            إلى أميرتي، وبرنسس قلبي، وعيوني التي أحبها أكثر مما تستطيع الكلمات أن تصف...
+        </p>
+
+        <a href="#message" class="btn">ادخلي قصتنا ❤️</a>
+    </div>
+</header>
+
+
+<!-- الرسالة -->
+<section id="message">
+
+    <h2 class="title">إلى أميرتي روضة 💌</h2>
+
+    <p class="subtitle">رسالة من قلبي إلك</p>
+
+    <div class="love-box">
+        <p>
+            يا روضة، يا أميرتي وعيوني ❤️<br><br>
+
+            يمكن الكلمات ما بتكفي أوصف قديش وجودك يعنيلي،
+            بس بعرف شغلة وحدة...
+            إنك شخص مميز بطريقة ما بتتشبه بحدا.<br><br>
+
+            بحب ضحكتك، كلامك، تفاصيلك الصغيرة،
+            وحتى الأشياء اللي يمكن إنتِ ما بتنتبهي إلها.
+            وبحب الشعور اللي بحسه لما أحكي معك.<br><br>
+
+            إنتِ مش مجرد اسم بالنسبة إلي...
+            إنتِ روضة، أميرتي، وبرنسس قلبي. ❤️
+        </p>
+    </div>
+
+</section>
+
+
+<!-- الصور -->
+<section>
+
+    <h2 class="title">ذكرياتنا 📸</h2>
+
+    <p class="subtitle">
+        هون مكان صور أميرتي ❤️
+    </p>
+
+    <div class="gallery">
+
+        <!-- غير أسماء الصور حسب صورك -->
+        <div class="photo">
+            <img src="photo1.jpg" alt="ذكرى">
+        </div>
+
+        <div class="photo">
+            <img src="photo2.jpg" alt="ذكرى">
+        </div>
+
+        <div class="photo">
+            <img src="photo3.jpg" alt="ذكرى">
+        </div>
+
+        <div class="photo">
+            <img src="photo4.jpg" alt="ذكرى">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- لماذا أحبها -->
+<section>
+
+    <h2 class="title">ليش إنتِ؟ ❤️</h2>
+
+    <p class="subtitle">لأنك ببساطة... إنتِ روضة.</p>
+
+    <div class="cards">
+
+        <div class="card">
+            <span>🥹</span>
+            <h3>ضحكتك</h3>
+            <p>فيها شيء قادر يغير يوم كامل.</p>
+        </div>
+
+        <div class="card">
+            <span>💗</span>
+            <h3>قلبك</h3>
+            <p>من أكثر الأشياء اللي بتخليني أقدرك.</p>
+        </div>
+
+        <div class="card">
+            <span>✨</span>
+            <h3>تفاصيلك</h3>
+            <p>حتى التفاصيل الصغيرة فيك إلها مكان بقلبي.</p>
+        </div>
+
+        <div class="card">
+            <span>👑</span>
+            <h3>أميرتي</h3>
+            <p>لأنك بالنسبة إلي مش شخص عادي.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- عداد -->
+<section>
+
+    <h2 class="title">من يوم ما عرفتك... ❤️</h2>
+
+    <p class="subtitle">
+        كل يوم بمر بخليني أقدّر وجودك أكثر.
+    </p>
+
+    <div class="counter" id="counter">
+        ❤️ 0 يوم ❤️
+    </div>
+
+</section>
+
+
+<!-- رسالة سرية -->
+<section>
+
+    <div class="secret">
+
+        <h2 class="title">عندي إلك سر 🤫</h2>
+
+        <p class="subtitle">
+            بس اضغطي الزر...
+        </p>
+
+        <button class="btn" onclick="showSecret()">
+            افتحي السر 💗
+        </button>
+
+        <div class="secret-message" id="secret">
+            إذا وصلتي لهون يا عيوني...
+            فاعرفي إنك أهم من مجرد كلمات مكتوبة بموقع.
+            وجودك لحاله إشي بقدّره،
+            وبدي تظلي دايمًا عارفة إنك غالية عندي. ❤️
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- النهاية -->
+<section class="final">
+
+    <h2>روضة ❤️</h2>
+
+    <p>
+        مهما كتبت ومهما حكيت،
+        رح تضل في أشياء أكبر من الكلام.<br><br>
+
+        إنتِ أميرتي 👑<br>
+        وإنتِ برنسس قلبي 💗<br>
+        وإنتِ عيوني ❤️
+    </p>
+
+    <button class="btn" onclick="heartExplosion()">
+        اضغطي هون يا أميرتي 💕
+    </button>
+
+</section>
+
+
+<footer>
+    صُنع بحب لـ روضة ❤️
+</footer>
+
+
+<script>
+
+/* عداد الأيام */
+const startDate = new Date("2026-01-01");
+const today = new Date();
+
+const difference = today - startDate;
+const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+document.getElementById("counter").innerHTML =
+    "❤️ " + days + " يوم من الذكريات ❤️";
+
+
+/* الرسالة السرية */
+function showSecret(){
+
+    const secret = document.getElementById("secret");
+
+    if(secret.style.display === "block"){
+        secret.style.display = "none";
+    }else{
+        secret.style.display = "block";
+    }
+
+}
+
+
+/* انفجار قلوب */
+function heartExplosion(){
+
+    for(let i=0;i<30;i++){
+
+        const heart = document.createElement("div");
+
+        heart.innerHTML = ["❤️","💗","💕","💖","💘"][Math.floor(Math.random()*5)];
+
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.fontSize = (15 + Math.random()*30) + "px";
+        heart.style.zIndex = "9999";
+        heart.style.pointerEvents = "none";
+
+        document.body.appendChild(heart);
+
+        const x = (Math.random()-0.5)*window.innerWidth;
+        const y = (Math.random()-0.5)*window.innerHeight;
+
+        heart.animate([
+            {transform:"translate(-50%,-50%) scale(1)",opacity:1},
+            {transform:`translate(${x}px,${y}px) scale(1.8)`,opacity:0}
+        ],{
+            duration:1500,
+            easing:"ease-out"
+        });
+
+        setTimeout(()=>{
+            heart.remove();
+        },1500);
+    }
+
+}
+
+</script>
+
+</body>
+</html>
