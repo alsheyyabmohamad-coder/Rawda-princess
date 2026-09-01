@@ -29,7 +29,9 @@ body::before{
     pointer-events:none;
     z-index:-1;
 }
-/* شريط التنقل */
+/* =========================
+   شريط التنقل
+========================= */
 nav{
     position:fixed;
     top:0;
@@ -51,7 +53,9 @@ nav a{
 nav a:hover{
     color:#e99bc1;
 }
-/* الصفحة الرئيسية */
+/* =========================
+   الصفحة الرئيسية
+========================= */
 .hero{
     min-height:100vh;
     display:flex;
@@ -105,7 +109,9 @@ nav a:hover{
     background:#bd6792;
     transform:scale(1.05);
 }
-/* الأقسام */
+/* =========================
+   الأقسام
+========================= */
 section{
     min-height:80vh;
     padding:100px 7%;
@@ -132,7 +138,9 @@ section{
     color:#999;
     line-height:2;
 }
-/* التاريخ */
+/* =========================
+   التاريخ
+========================= */
 .date-card{
     margin-top:35px;
     padding:40px;
@@ -149,7 +157,9 @@ section{
 .date-text{
     color:#aaa;
 }
-/* الأغنية */
+/* =========================
+   الأغنية
+========================= */
 .music-box{
     margin-top:35px;
     padding:35px;
@@ -190,7 +200,9 @@ section{
     color:#bd79a1;
     font-size:13px;
 }
-/* الشعر */
+/* =========================
+   الشعر
+========================= */
 .poem-box{
     margin-top:40px;
     padding:45px;
@@ -206,7 +218,9 @@ section{
     margin-top:30px;
     color:#bd79a1;
 }
-/* العداد */
+/* =========================
+   العداد
+========================= */
 .counter-box{
     margin-top:35px;
     display:grid;
@@ -228,7 +242,9 @@ section{
     color:#888;
     margin-top:8px;
 }
-/* السؤال */
+/* =========================
+   السؤال
+========================= */
 .question{
     margin-top:30px;
     padding:30px;
@@ -262,7 +278,9 @@ section{
     margin-top:20px;
     color:#df9ebe;
 }
-/* الرسالة المخفية */
+/* =========================
+   الرسالة المخفية
+========================= */
 .secret-btn{
     margin-top:30px;
     padding:15px 30px;
@@ -281,7 +299,54 @@ section{
     color:#ccc;
     line-height:2;
 }
-/* النهاية */
+/* =========================
+   القلب
+========================= */
+.love-section{
+    min-height:60vh;
+    text-align:center;
+}
+.love-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.love-heart{
+    font-size:90px;
+    cursor:pointer;
+    animation:heartbeat 1.4s infinite;
+    transition:.3s;
+    user-select:none;
+}
+.love-heart:hover{
+    transform:scale(1.15);
+}
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.15);
+    }
+}
+.love-message{
+    opacity:0;
+    transform:translateY(20px) scale(.8);
+    margin-top:25px;
+    font-size:35px;
+    color:#df91b7;
+    font-weight:bold;
+    transition:.6s;
+    pointer-events:none;
+}
+.love-message.show{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+/* =========================
+   النهاية
+========================= */
 .final{
     min-height:100vh;
     text-align:center;
@@ -295,7 +360,9 @@ section{
     margin-top:20px;
     color:#888;
 }
-/* الموبايل */
+/* =========================
+   الموبايل
+========================= */
 @media(max-width:600px){
     nav{
         gap:15px;
@@ -323,11 +390,19 @@ section{
     .date{
         font-size:34px;
     }
+    .love-heart{
+        font-size:75px;
+    }
+    .love-message{
+        font-size:28px;
+    }
 }
 </style>
 </head>
 <body>
-<!-- شريط التنقل -->
+<!-- =========================
+     شريط التنقل
+========================= -->
 <nav>
 <a href="#start">البداية</a>
 <a href="#first">أول تواصل</a>
@@ -335,7 +410,9 @@ section{
 <a href="#poem">قصيدة إهداء للأميرة</a>
 <a href="#moments">التفاصيل</a>
 </nav>
-<!-- البداية -->
+<!-- =========================
+     البداية
+========================= -->
 <section class="hero" id="start">
 <div class="hero-content">
 <div class="mini">
@@ -352,7 +429,9 @@ section{
 </a>
 </div>
 </section>
-<!-- أول مرة حكينا -->
+<!-- =========================
+     أول مرة حكينا
+========================= -->
 <section id="first">
 <div class="container">
 <div class="tag">
@@ -375,7 +454,9 @@ section{
 </div>
 </div>
 </section>
-<!-- الأغنية -->
+<!-- =========================
+     الأغنية
+========================= -->
 <section id="music-section">
 <div class="container">
 <div class="tag">
@@ -417,7 +498,9 @@ section{
 </div>
 </div>
 </section>
-<!-- الشعر -->
+<!-- =========================
+     الشعر
+========================= -->
 <section id="poem">
 <div class="container">
 <div class="tag">
@@ -443,7 +526,9 @@ section{
 </div>
 </div>
 </section>
-<!-- عداد الأيام -->
+<!-- =========================
+     عداد الأيام
+========================= -->
 <section id="moments">
 <div class="container">
 <div class="tag">
@@ -483,7 +568,9 @@ section{
 </div>
 </div>
 </section>
-<!-- سؤال تفاعلي -->
+<!-- =========================
+     سؤال تفاعلي
+========================= -->
 <section>
 <div class="container">
 <div class="tag">
@@ -515,7 +602,9 @@ section{
 </div>
 </div>
 </section>
-<!-- رسالة مخفية -->
+<!-- =========================
+     رسالة مخفية
+========================= -->
 <section>
 <div class="container">
 <div class="tag">
@@ -545,7 +634,26 @@ section{
 </div>
 </div>
 </section>
-<!-- النهاية -->
+<!-- =========================
+     القلب
+========================= -->
+<section class="love-section">
+<div class="love-container">
+<div
+    class="love-heart"
+    onclick="showLove()"
+    title="اضغطي ❤️"
+>
+    ❤️
+</div>
+<div class="love-message" id="loveMessage">
+    I LOVE YOU ❤️
+</div>
+</div>
+</section>
+<!-- =========================
+     النهاية
+========================= -->
 <section class="final">
 <div class="container">
 <h2>
@@ -557,7 +665,9 @@ section{
 </div>
 </section>
 <script>
-/* تشغيل الأغنية */
+/* =========================
+   تشغيل الأغنية
+========================= */
 function playMusic(){
     const music =
         document.getElementById("music");
@@ -594,7 +704,9 @@ document
     document.getElementById("musicStatus").innerText =
         "انتهت الأغنية 🎵";
 });
-/* عداد الأيام */
+/* =========================
+   عداد الأيام
+========================= */
 const firstDate =
     new Date("2025-12-31T00:00:00");
 function updateCounter(){
@@ -621,7 +733,9 @@ function updateCounter(){
 }
 updateCounter();
 setInterval(updateCounter,60000);
-/* السؤال التفاعلي */
+/* =========================
+   السؤال التفاعلي
+========================= */
 function answer(text){
     const box =
         document.getElementById("answer");
@@ -630,7 +744,9 @@ function answer(text){
     box.style.display =
         "block";
 }
-/* الرسالة المخفية */
+/* =========================
+   الرسالة المخفية
+========================= */
 function showSecret(){
     const secret =
         document.getElementById("secret");
@@ -641,6 +757,14 @@ function showSecret(){
         secret.style.display =
             "block";
     }
+}
+/* =========================
+   القلب ❤️
+========================= */
+function showLove(){
+    const message =
+        document.getElementById("loveMessage");
+    message.classList.toggle("show");
 }
 </script>
 </body>
