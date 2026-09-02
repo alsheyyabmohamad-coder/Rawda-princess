@@ -15,9 +15,6 @@ body {
     min-height: 100vh;
     font-family: Tahoma, Arial, sans-serif;
 }
-/* =========================
-   المشهد الأساسي
-========================= */
 .scene {
     position: fixed;
     inset: 0;
@@ -31,9 +28,7 @@ body {
         );
     transition: background 5s ease-in-out;
 }
-/* =========================
-   النجوم
-========================= */
+/* النجوم */
 .stars {
     position: absolute;
     inset: 0;
@@ -58,9 +53,7 @@ body {
         transform: scale(1.4);
     }
 }
-/* =========================
-   القمر
-========================= */
+/* القمر */
 .moon {
     position: absolute;
     top: 12%;
@@ -86,9 +79,7 @@ body {
     border-radius: 50%;
     background: #020817;
 }
-/* =========================
-   الشمس
-========================= */
+/* الشمس */
 .sun {
     position: absolute;
     width: 120px;
@@ -103,9 +94,7 @@ body {
     transition: top 5s ease;
     opacity: 0;
 }
-/* =========================
-   الغيوم
-========================= */
+/* الغيوم */
 .cloud {
     position: absolute;
     width: 180px;
@@ -143,9 +132,7 @@ body {
     right: 8%;
     transform: scale(.7);
 }
-/* =========================
-   الأرض
-========================= */
+/* الأرض */
 .ground {
     position: absolute;
     bottom: 0;
@@ -162,9 +149,7 @@ body {
         18% 18% 0 0;
     transition: background 5s ease;
 }
-/* =========================
-   الورود
-========================= */
+/* الورود */
 .flowers {
     position: absolute;
     bottom: 0;
@@ -244,9 +229,7 @@ body {
     box-shadow:
         0 0 15px rgba(255,100,130,.5);
 }
-/* =========================
-   رسالة صباح الخير
-========================= */
+/* رسالة صباح الخير */
 .message {
     position: absolute;
     top: 45%;
@@ -275,9 +258,7 @@ body {
         clamp(17px, 4vw, 24px);
     color: #fff5df;
 }
-/* =========================
-   القصيدة
-========================= */
+/* القصيدة */
 .poem {
     position: absolute;
     z-index: 20;
@@ -287,12 +268,10 @@ body {
         translate(-50%, -50%)
         translateY(40px);
     width: min(92%, 650px);
+    max-height: 78vh;
+    overflow-y: auto;
     padding: 30px 25px;
-    /*
-       خلفية فاتحة حتى تكون
-       القصيدة واضحة بالنهار
-    */
-    background: rgba(255,255,255,.82);
+    background: rgba(255,255,255,.88);
     border: 2px solid rgba(0,0,0,.12);
     box-shadow:
         0 10px 40px rgba(0,0,0,.15);
@@ -304,25 +283,101 @@ body {
         opacity 2s ease,
         transform 2s ease;
 }
-/* عنوان القصيدة */
 .poem h2 {
     color: #111111;
     margin-bottom: 20px;
     font-size: 30px;
 }
-/* نص القصيدة */
 .poem-text {
     color: #000000;
     font-size: 18px;
     line-height: 2.1;
     font-weight: 500;
 }
-/* التوقيع */
 .signature {
     margin-top: 20px;
     color: #111111;
     font-size: 17px;
     font-weight: bold;
+}
+/* =========================
+   سؤال الحب
+========================= */
+.love-question {
+    position: absolute;
+    z-index: 30;
+    top: 50%;
+    left: 50%;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+    width: min(92%, 600px);
+    padding: 30px 22px;
+    background: rgba(255,255,255,.92);
+    border-radius: 28px;
+    text-align: center;
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.2);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+.love-question h2 {
+    color: #111;
+    font-size: clamp(24px, 6vw, 35px);
+    margin-bottom: 10px;
+}
+.love-question p {
+    color: #333;
+    margin-bottom: 22px;
+    font-size: 16px;
+}
+/* الخيارات */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.option {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 18px;
+    background: #f1f1f1;
+    color: #111;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+}
+.option:hover {
+    transform: scale(1.03);
+    background: #e5e5e5;
+}
+/* الرسالة بعد الإجابة */
+.answer {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #111;
+    min-height: 25px;
+}
+/* ظهور سؤال الحب */
+.show-love .love-question {
+    opacity: 1;
+    pointer-events: auto;
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+/* إخفاء القصيدة */
+.show-love .poem {
+    opacity: 0;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+    pointer-events: none;
 }
 /* =========================
    الزر
@@ -354,7 +409,7 @@ body {
         scale(1.05);
 }
 /* =========================
-   عند تحول الليل إلى النهار
+   النهار
 ========================= */
 .day .scene {
     background:
@@ -392,18 +447,14 @@ body {
 .day .flowers {
     opacity: 1;
 }
-/* =========================
-   ظهور الرسالة
-========================= */
+/* رسالة الصباح */
 .show-message .message {
     opacity: 1;
     transform:
         translate(-50%, -50%)
         scale(1);
 }
-/* =========================
-   ظهور القصيدة
-========================= */
+/* القصيدة */
 .show-poem .message {
     opacity: 0;
     transform:
@@ -434,6 +485,7 @@ body {
     }
     .poem {
         padding: 23px 16px;
+        max-height: 75vh;
     }
     .poem-text {
         font-size: 15px;
@@ -441,6 +493,9 @@ body {
     }
     .poem h2 {
         font-size: 25px;
+    }
+    .love-question {
+        padding: 25px 17px;
     }
 }
 </style>
@@ -469,7 +524,9 @@ body {
             انتهى الليل... وبدأ صباح يليق فيكي ☀️
         </p>
     </div>
-    <!-- القصيدة -->
+    <!-- =====================
+         القصيدة
+    ====================== -->
     <div class="poem">
         <h2>
             ☀️ صباح الخير يا روضة
@@ -488,6 +545,43 @@ body {
         </div>
         <div class="signature">
             — إلى روضة 🌹
+        </div>
+    </div>
+    <!-- =====================
+         سؤال الحب
+    ====================== -->
+    <div class="love-question">
+        <h2>
+            احزري قديش محمد بحبك؟ ❤️
+        </h2>
+        <p>
+            اختاري الإجابة الصح... إذا قدرتِ 😌
+        </p>
+        <div class="options">
+            <button
+                class="option"
+                onclick="wrongAnswer()">
+                شوي 🥹
+            </button>
+            <button
+                class="option"
+                onclick="wrongAnswer()">
+                كثير ❤️
+            </button>
+            <button
+                class="option"
+                onclick="wrongAnswer()">
+                أكثر مما بتتخيلي 🫣
+            </button>
+            <button
+                class="option"
+                onclick="correctAnswer()">
+                حب محمد ما إلو نهاية ❤️♾️
+            </button>
+        </div>
+        <div
+            class="answer"
+            id="answer">
         </div>
     </div>
     <!-- زر البداية -->
@@ -546,24 +640,25 @@ positions.forEach((pos) => {
     flowers.appendChild(flower);
 });
 /* =========================
-   بدء الصباح
+   بدء المشهد
 ========================= */
 function startMorning() {
     const button =
         document.querySelector(".start-btn");
     button.style.opacity = "0";
-    button.style.pointerEvents = "none";
+    button.style.pointerEvents =
+        "none";
     /* يبدأ تحول الليل للنهار */
     setTimeout(() => {
         document.body.classList.add("day");
     }, 1000);
-    /* تظهر رسالة صباح الخير */
+    /* رسالة صباح الخير */
     setTimeout(() => {
         document.body.classList.add(
             "show-message"
         );
     }, 6000);
-    /* تظهر القصيدة */
+    /* القصيدة */
     setTimeout(() => {
         document.body.classList.remove(
             "show-message"
@@ -572,6 +667,30 @@ function startMorning() {
             "show-poem"
         );
     }, 10000);
+    /* سؤال الحب بعد القصيدة */
+    setTimeout(() => {
+        document.body.classList.add(
+            "show-love"
+        );
+    }, 17000);
+}
+/* =========================
+   إجابة غلط
+========================= */
+function wrongAnswer() {
+    const answer =
+        document.getElementById("answer");
+    answer.innerHTML =
+        "غلط 😂❤️ جرّبي إجابة ثانية";
+}
+/* =========================
+   الإجابة الصحيحة
+========================= */
+function correctAnswer() {
+    const answer =
+        document.getElementById("answer");
+    answer.innerHTML =
+        "صح ❤️♾️ حب محمد إلك ما إلو نهاية.";
 }
 </script>
 </body>
