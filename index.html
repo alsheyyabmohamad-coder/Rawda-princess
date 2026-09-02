@@ -3,33 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>برنسس 👑❤️</title>
+<title>صباح الخير يا سدين ❤️</title>
 <style>
 * {
     box-sizing: border-box;
 }
-body {
+html, body {
     margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #dff6ff, #f3e8ff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    color: #333;
+    font-family: "Arial", sans-serif;
 }
-/* النجوم */
+body {
+    background: #05091c;
+    transition: background 4s ease;
+}
+/* =========================
+   السماء
+========================= */
+.sky {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 20%, #18265a 0%, #090d2b 45%, #02030d 100%);
+    transition: 5s ease;
+    z-index: -5;
+}
+/* =========================
+   النجوم
+========================= */
 .stars {
     position: fixed;
     inset: 0;
-    pointer-events: none;
-    z-index: -1;
+    transition: 4s ease;
 }
 .star {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 3px;
+    height: 3px;
     background: white;
     border-radius: 50%;
     animation: twinkle 2s infinite alternate;
@@ -37,155 +49,372 @@ body {
 @keyframes twinkle {
     from {
         opacity: .2;
-        transform: scale(.8);
+        transform: scale(.7);
     }
     to {
         opacity: 1;
         transform: scale(1.3);
     }
 }
-/* الكرت */
-.container {
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-    background: rgba(255,255,255,0.65);
-    padding: 35px 25px;
-    border-radius: 30px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-}
-h1 {
-    font-size: 34px;
-    margin-bottom: 10px;
-}
-p {
-    font-size: 18px;
-    line-height: 1.8;
-}
-/* دائرة التنفس */
-.circle {
-    width: 170px;
-    height: 170px;
-    margin: 30px auto;
+/* =========================
+   القمر
+========================= */
+.moon {
+    position: absolute;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
+    background: #fff9d8;
     box-shadow:
-        0 0 25px rgba(150,180,255,0.35);
+        0 0 30px #fff5b5,
+        0 0 80px rgba(255,245,181,.4);
+    top: 12%;
+    left: 15%;
     transition:
-        transform 4s ease-in-out,
-        box-shadow 4s ease-in-out;
+        top 5s ease,
+        left 5s ease,
+        opacity 4s ease;
 }
-.circle.breathe {
-    transform: scale(1.35);
+/* =========================
+   الشمس
+========================= */
+.sun {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #ffd86b;
     box-shadow:
-        0 0 55px rgba(150,180,255,0.7);
+        0 0 40px #ffd86b,
+        0 0 100px rgba(255,216,107,.5);
+    right: 15%;
+    bottom: -150px;
+    transition: bottom 6s ease;
 }
-/* الزر */
-button {
-    border: none;
-    padding: 14px 28px;
-    border-radius: 25px;
-    font-size: 17px;
-    cursor: pointer;
-    background: #9b8cff;
+/* =========================
+   السحب
+========================= */
+.cloud {
+    position: absolute;
+    width: 180px;
+    height: 55px;
+    background: rgba(255,255,255,.8);
+    border-radius: 50px;
+    opacity: 0;
+    transition: opacity 5s ease;
+}
+.cloud:before,
+.cloud:after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+}
+.cloud:before {
+    width: 70px;
+    height: 70px;
+    left: 25px;
+    top: -35px;
+}
+.cloud:after {
+    width: 90px;
+    height: 90px;
+    right: 20px;
+    top: -45px;
+}
+.cloud1 {
+    top: 18%;
+    left: -200px;
+}
+.cloud2 {
+    top: 30%;
+    right: -200px;
+}
+/* =========================
+   الأرض
+========================= */
+.ground {
+    position: absolute;
+    bottom: -150px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(#75b84c, #3c8d36);
+    transition: bottom 5s ease;
+}
+/* =========================
+   الزهور
+========================= */
+.flowers {
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+    transition: bottom 5s ease;
+}
+/* =========================
+   المحتوى
+========================= */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 650px;
+    text-align: center;
     color: white;
+    transition: 2s ease;
+}
+.startBtn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background: rgba(255,255,255,.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,.4);
+    backdrop-filter: blur(10px);
     transition: .3s;
 }
-button:hover {
-    transform: scale(1.05);
+.startBtn:hover {
+    transform: scale(1.08);
 }
-button:active {
-    transform: scale(.95);
-}
-/* الرسالة */
-.message {
-    margin-top: 25px;
-    font-size: 20px;
+.greeting {
+    opacity: 0;
+    font-size: 42px;
     font-weight: bold;
-    line-height: 1.8;
+    transition: 2s ease;
+    text-shadow:
+        0 3px 15px rgba(0,0,0,.3);
+}
+/* =========================
+   القصيدة
+========================= */
+.poem {
+    opacity: 0;
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.75);
+    color: #111;
+    font-size: 20px;
+    line-height: 2;
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.15);
+    transition: 2s ease;
+}
+/* =========================
+   السؤال
+========================= */
+.question {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 2s ease;
+}
+.question h2 {
+    font-size: 32px;
+    color: #222;
+}
+.question p {
+    font-size: 18px;
+    color: #444;
+}
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+.option {
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #222;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.1);
+    transition: .3s;
+}
+.option:hover {
+    transform: scale(1.04);
+}
+.result {
+    margin-top: 20px;
+    font-size: 21px;
+    font-weight: bold;
+    min-height: 35px;
+}
+/* =========================
+   الوضع النهاري
+========================= */
+.day .sky {
+    background:
+        linear-gradient(#7ed6ff, #dff7ff);
+}
+.day .stars {
+    opacity: 0;
+}
+.day .moon {
+    opacity: 0;
+}
+.day .sun {
+    bottom: 55%;
+}
+.day .cloud {
+    opacity: 1;
+}
+.day .cloud1 {
+    left: 10%;
+}
+.day .cloud2 {
+    right: 10%;
+}
+.day .ground {
+    bottom: 0;
+}
+.day .flowers {
+    bottom: 20px;
 }
 </style>
 </head>
 <body>
+<div class="sky"></div>
 <!-- النجوم -->
 <div class="stars">
-    <div class="star" style="top:8%; left:12%;"></div>
-    <div class="star" style="top:15%; left:80%;"></div>
-    <div class="star" style="top:28%; left:25%;"></div>
-    <div class="star" style="top:40%; left:90%;"></div>
-    <div class="star" style="top:65%; left:12%;"></div>
-    <div class="star" style="top:75%; left:85%;"></div>
-    <div class="star" style="top:55%; left:70%;"></div>
-    <div class="star" style="top:88%; left:35%;"></div>
+    <div class="star" style="top:8%;left:10%"></div>
+    <div class="star" style="top:15%;left:30%"></div>
+    <div class="star" style="top:12%;left:70%"></div>
+    <div class="star" style="top:25%;left:85%"></div>
+    <div class="star" style="top:35%;left:20%"></div>
+    <div class="star" style="top:42%;left:75%"></div>
+    <div class="star" style="top:55%;left:12%"></div>
+    <div class="star" style="top:65%;left:90%"></div>
+    <div class="star" style="top:75%;left:35%"></div>
+    <div class="star" style="top:85%;left:65%"></div>
 </div>
-<div class="container">
-    <h1>برنسس 👑❤️</h1>
-    <p>
-        قبل ما تبدأي الـ Presentation...
-        خدي دقيقة إلك 🌷
-    </p>
-    <p>
-        لا تفكري بالناس ولا بالنتيجة،
-        بس ركزي مع نفسك 🤍
-    </p>
-    <!-- دائرة التنفس -->
-    <div class="circle" id="circle">
-        خدي نفس 🌿
-    </div>
-    <button onclick="startBreathing()">
-        ابدئي الهدوء ✨
+<!-- القمر -->
+<div class="moon"></div>
+<!-- الشمس -->
+<div class="sun"></div>
+<!-- السحب -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<!-- الأرض -->
+<div class="ground"></div>
+<!-- الزهور -->
+<div class="flowers">
+    🌷 🌸 🌹 🌼 🌷 🌸 🌹
+</div>
+<!-- =========================
+     البداية
+========================= -->
+<div class="content" id="content">
+    <button class="startBtn" onclick="startMorning()">
+        🌙 ابدئي الصباح
     </button>
-    <div class="message" id="message">
-        إنتِ قدها ❤️
+    <h1 class="greeting" id="greeting">
+        صباح الخير يا سدين 🌹
+    </h1>
+    <div class="poem" id="poem">
+        ☀️ صباح الخير يا سدين
+        <br><br>
+        صباحُ الخيرِ يا أجملَ صباحٍ
+        <br>
+        ويا وردًا يزيّنُ كلَّ دربِ
+        <br><br>
+        إذا أشرقتْ شمسُ اليومِ قلتُ
+        <br>
+        لعلَّ الشمسَ جاءت من عينيكِ
+        <br><br>
+        وإن سألتِ الصباحَ عن الأماني
+        <br>
+        سيخبرُكِ بأنكِ أجملُ أمنيّة
+        <br><br>
+        صباحُكِ ضحكةٌ تمحو التعبَ
+        <br>
+        وصباحُكِ وردٌ لا يذبلُ أبدًا
+        <br><br>
+        فصباحُ الخيرِ يا سدينُ،
+        <br>
+        ويا أولَ شيءٍ تمنّيتُ
+        أن يبتسمَ له يومي ❤️
+        <br><br>
+        — إلى سدين 🌹
     </div>
+</div>
+<!-- =========================
+     السؤال النهائي
+========================= -->
+<div class="question" id="question">
+    <h2>
+        احزري قديش محمد بحبك؟ ❤️
+    </h2>
+    <p>
+        اختاري الإجابة الصح... إذا قدرتِ 😌
+    </p>
+    <div class="options">
+        <button class="option" onclick="wrong()">
+            شوي 🥹
+        </button>
+        <button class="option" onclick="wrong()">
+            كثير ❤️
+        </button>
+        <button class="option" onclick="wrong()">
+            أكثر مما بتتخيلي 🫣
+        </button>
+        <button class="option" onclick="correct()">
+            حب محمد ما إلو نهاية ❤️♾️
+        </button>
+    </div>
+    <div class="result" id="result"></div>
 </div>
 <script>
-let running = false;
-function startBreathing() {
-    if (running) return;
-    running = true;
-    const circle = document.getElementById("circle");
-    const message = document.getElementById("message");
-    let count = 0;
-    function breathe() {
-        /*
-        5 دورات تنفس
-        كل دورة:
-        4 ثواني شهيق
-        4 ثواني زفير
-        */
-        if (count >= 5) {
-            circle.classList.remove("breathe");
-            circle.innerHTML = "خلصنا ❤️";
-            message.innerHTML =
-                "هسا أحسن؟ 🌷<br>" +
-                "روحي افرجيهم مين برنسس 😌👑❤️";
-            running = false;
-            return;
-        }
-        /* الشهيق */
-        circle.classList.add("breathe");
-        circle.innerHTML = "خدي نفس 🌿";
-        message.innerHTML =
-            "شهيق... بهدوء 🤍";
+function startMorning() {
+    document.body.classList.add("day");
+    /* إخفاء الزر */
+    document.querySelector(".startBtn").style.opacity = "0";
+    /* بعد 6 ثواني تظهر صباح الخير */
+    setTimeout(() => {
+        document.getElementById("greeting").style.opacity = "1";
+    }, 6000);
+    /* بعد 10 ثواني تظهر القصيدة */
+    setTimeout(() => {
+        document.getElementById("poem").style.opacity = "1";
+    }, 10000);
+    /* بعد 17 ثانية تختفي القصيدة ويظهر السؤال */
+    setTimeout(() => {
+        document.getElementById("content").style.opacity = "0";
         setTimeout(() => {
-            /* الزفير */
-            circle.classList.remove("breathe");
-            circle.innerHTML = "طلّعيه 🤍";
-            message.innerHTML =
-                "زفير... ببطء 🌿";
-            setTimeout(() => {
-                count++;
-                breathe();
-            }, 4000);
-        }, 4000);
-    }
-    breathe();
+            document.getElementById("content").style.display = "none";
+            const question =
+                document.getElementById("question");
+            question.style.opacity = "1";
+            question.style.pointerEvents = "auto";
+        }, 1500);
+    }, 17000);
+}
+/* إجابة خاطئة */
+function wrong() {
+    document.getElementById("result").innerHTML =
+        "غلط 😂❤️ جرّبي إجابة ثانية";
+}
+/* الإجابة الصحيحة */
+function correct() {
+    document.getElementById("result").innerHTML =
+        "صح ❤️♾️ حب محمد إلك ما إلو نهاية.";
 }
 </script>
 </body>
