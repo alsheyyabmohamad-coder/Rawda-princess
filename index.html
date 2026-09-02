@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>صباح الخير يا روضة 🌹</title>
+<title>صباح الخير يا روضة 🌙🌹</title>
 <style>
 * {
     margin: 0;
@@ -11,355 +11,548 @@
     box-sizing: border-box;
 }
 body {
-    min-height: 100vh;
     overflow: hidden;
-    font-family: "Tahoma", Arial, sans-serif;
-    background: linear-gradient(to bottom, #07152d, #102b4d 55%, #1d4052);
-    color: white;
+    min-height: 100vh;
+    font-family: Tahoma, Arial, sans-serif;
 }
-/* السماء */
-.sky {
+/* =========================
+   السماء
+========================= */
+.scene {
     position: fixed;
     inset: 0;
     overflow: hidden;
+    background:
+        linear-gradient(
+            to bottom,
+            #020817 0%,
+            #07152d 55%,
+            #142c43 100%
+        );
+    transition:
+        background 5s ease-in-out;
 }
-/* النجوم */
+/* =========================
+   النجوم
+========================= */
+.stars {
+    position: absolute;
+    inset: 0;
+    transition: opacity 4s ease;
+}
 .star {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
     background: white;
     border-radius: 50%;
-    opacity: 0;
-    animation: appearStar 1.5s forwards, twinkle 2s infinite alternate;
-}
-@keyframes appearStar {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
-    to {
-        opacity: .9;
-        transform: scale(1);
-    }
+    box-shadow: 0 0 8px white;
+    animation: twinkle 2s infinite alternate;
 }
 @keyframes twinkle {
-    from { opacity: .35; }
-    to { opacity: 1; }
+    from {
+        opacity: .25;
+        transform: scale(.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.4);
+    }
 }
-/* القمر */
+/* =========================
+   القمر
+========================= */
 .moon {
     position: absolute;
-    top: 10%;
+    top: 12%;
     left: 12%;
-    width: 100px;
-    height: 100px;
+    width: 105px;
+    height: 105px;
     border-radius: 50%;
-    background: #fff8cf;
-    box-shadow: 0 0 30px #fff4b0, 0 0 70px rgba(255,240,170,.4);
-    opacity: 0;
-    transform: translateY(-30px) scale(.5);
-    animation: moonAppear 2s 2s forwards;
+    background: #fff5c4;
+    box-shadow:
+        0 0 25px #fff5c4,
+        0 0 70px rgba(255,245,196,.35);
+    transition:
+        opacity 4s ease,
+        transform 5s ease;
 }
 .moon::after {
     content: "";
     position: absolute;
-    top: -8px;
+    top: -7px;
     left: 25px;
-    width: 100px;
-    height: 100px;
+    width: 105px;
+    height: 105px;
     border-radius: 50%;
-    background: #07152d;
+    background: #020817;
 }
-@keyframes moonAppear {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+/* =========================
+   الشمس
+========================= */
+.sun {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    right: 12%;
+    top: 100%;
+    background: #ffd85a;
+    box-shadow:
+        0 0 30px #ffd85a,
+        0 0 90px rgba(255,216,90,.5);
+    transition: top 5s ease;
+    opacity: 0;
 }
-/* الأرض */
+/* =========================
+   الغيوم
+========================= */
+.cloud {
+    position: absolute;
+    width: 180px;
+    height: 55px;
+    background: rgba(255,255,255,.75);
+    border-radius: 50px;
+    opacity: 0;
+    transition:
+        opacity 4s ease;
+}
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+}
+.cloud::before {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+    left: 30px;
+}
+.cloud::after {
+    width: 90px;
+    height: 90px;
+    top: -45px;
+    right: 25px;
+}
+.cloud1 {
+    top: 20%;
+    left: 10%;
+}
+.cloud2 {
+    top: 30%;
+    right: 8%;
+    transform: scale(.7);
+}
+/* =========================
+   الأرض
+========================= */
 .ground {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 27%;
-    background: #081d18;
-    border-radius: 50% 50% 0 0 / 15% 15% 0 0;
+    height: 25%;
+    background:
+        linear-gradient(
+            to bottom,
+            #173d26,
+            #071d13
+        );
+    border-radius: 50% 50% 0 0 / 18% 18% 0 0;
+    transition: background 5s ease;
 }
-/* الرسالة */
-.intro {
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-    z-index: 10;
-    animation: introFade 3s forwards;
-}
-.intro h1 {
-    font-size: clamp(34px, 8vw, 70px);
-    margin-bottom: 15px;
-    text-shadow: 0 0 20px rgba(255,255,255,.4);
-}
-.intro p {
-    font-size: clamp(16px, 4vw, 22px);
-    color: #ffe9b0;
-}
-@keyframes introFade {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -40%);
-    }
-    25% {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
-    75% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-/* القصيدة */
-.poem-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: min(90%, 650px);
-    padding: 30px;
-    background: rgba(4, 16, 30, .75);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: 25px;
-    backdrop-filter: blur(12px);
-    text-align: center;
-    z-index: 20;
-    opacity: 0;
-    animation: poemAppear 2s 5s forwards;
-}
-.poem-box h2 {
-    color: #ffd98a;
-    margin-bottom: 22px;
-    font-size: 30px;
-}
-.poem {
-    line-height: 2.2;
-    font-size: 18px;
-    color: #f7f4eb;
-}
-.signature {
-    margin-top: 20px;
-    color: #ffb7c5;
-    font-size: 18px;
-}
-@keyframes poemAppear {
-    to {
-        opacity: 1;
-    }
-}
-/* الورود */
+/* =========================
+   الورود
+========================= */
 .flowers {
     position: absolute;
-    bottom: 10%;
-    left: 0;
+    bottom: 0;
     width: 100%;
-    height: 170px;
-    z-index: 5;
+    height: 230px;
+    opacity: 0;
+    transition: opacity 3s ease;
 }
-/* زهرة */
 .flower {
     position: absolute;
-    bottom: 0;
-    opacity: 0;
-    animation: flowerGrow 2s forwards;
+    bottom: 20px;
+    width: 50px;
+    height: 160px;
 }
 .stem {
-    width: 4px;
-    height: 100px;
-    background: #4f9b5b;
-    margin: auto;
+    position: absolute;
+    bottom: 0;
+    left: 23px;
+    width: 5px;
+    height: 120px;
+    background: #4d9b58;
     border-radius: 10px;
 }
 .leaf {
     position: absolute;
-    width: 30px;
-    height: 14px;
-    background: #5daa61;
+    width: 35px;
+    height: 17px;
+    background: #55a85e;
     border-radius: 100% 0 100% 0;
 }
-.leaf.left {
-    left: -25px;
-    bottom: 35px;
+.leaf1 {
+    left: -3px;
+    bottom: 45px;
     transform: rotate(-25deg);
 }
-.leaf.right {
-    right: -25px;
-    bottom: 55px;
+.leaf2 {
+    right: -2px;
+    bottom: 70px;
     transform: rotate(25deg) scaleX(-1);
 }
 .rose {
     position: absolute;
-    top: -32px;
+    top: 12px;
     left: 50%;
     transform: translateX(-50%);
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background:
-        radial-gradient(circle at 50% 50%, #ffd1d9 0 10%, transparent 11%),
-        radial-gradient(circle at 30% 35%, #ff7892 0 28%, transparent 29%),
-        radial-gradient(circle at 70% 35%, #ff6f8a 0 28%, transparent 29%),
-        radial-gradient(circle at 35% 70%, #ff5274 0 28%, transparent 29%),
-        radial-gradient(circle at 70% 70%, #ff5c7c 0 28%, transparent 29%);
-    filter: drop-shadow(0 0 8px rgba(255,100,130,.5));
+        radial-gradient(
+            circle at center,
+            #ffd1d9 0 10%,
+            transparent 11%
+        ),
+        radial-gradient(
+            circle at 30% 35%,
+            #ff718b 0 28%,
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 70% 35%,
+            #ff5d7c 0 28%,
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 35% 70%,
+            #ff5274 0 28%,
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            #ff6685 0 28%,
+            transparent 29%
+        );
+    box-shadow:
+        0 0 15px rgba(255,100,130,.5);
 }
-@keyframes flowerGrow {
-    from {
-        opacity: 0;
-        transform: translateY(50px) scale(.4);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+/* =========================
+   رسالة الصباح
+========================= */
+.message {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+    width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
+    z-index: 10;
 }
-/* زر */
-.restart {
-    position: fixed;
-    bottom: 25px;
+.message h1 {
+    font-size: clamp(35px, 9vw, 75px);
+    color: white;
+    text-shadow:
+        0 3px 20px rgba(0,0,0,.3);
+}
+.message p {
+    margin-top: 15px;
+    font-size: clamp(17px, 4vw, 24px);
+    color: #fff5df;
+}
+/* =========================
+   القصيدة
+========================= */
+.poem {
+    position: absolute;
+    z-index: 20;
+    top: 50%;
+    left: 50%;
+    transform:
+        translate(-50%, -50%)
+        translateY(40px);
+    width: min(92%, 650px);
+    padding: 30px 25px;
+    background: rgba(255,255,255,.13);
+    border: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    text-align: center;
+    opacity: 0;
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
+}
+.poem h2 {
+    color: #fff0b5;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+.poem-text {
+    color: white;
+    font-size: 18px;
+    line-height: 2.1;
+}
+.signature {
+    margin-top: 20px;
+    color: #ffe0e8;
+    font-size: 17px;
+}
+/* =========================
+   الزر
+========================= */
+.start-btn {
+    position: absolute;
+    z-index: 50;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 50;
-    border: none;
     padding: 13px 25px;
+    border: 1px solid rgba(255,255,255,.3);
     border-radius: 30px;
     background: rgba(255,255,255,.12);
     color: white;
+    font-size: 15px;
     cursor: pointer;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,.2);
     transition: .3s;
 }
-.restart:hover {
-    background: rgba(255,255,255,.22);
-    transform: translateX(-50%) scale(1.05);
+.start-btn:hover {
+    background: rgba(255,255,255,.25);
+    transform:
+        translateX(-50%)
+        scale(1.05);
 }
-/* موبايل */
+/* =========================
+   مرحلة النهار
+========================= */
+.day .scene {
+    background:
+        linear-gradient(
+            to bottom,
+            #55bde8 0%,
+            #a9e5f7 55%,
+            #dff7e5 100%
+        );
+}
+.day .stars {
+    opacity: 0;
+}
+.day .moon {
+    opacity: 0;
+    transform:
+        translateY(-120px)
+        scale(.7);
+}
+.day .sun {
+    opacity: 1;
+    top: 10%;
+}
+.day .cloud {
+    opacity: 1;
+}
+.day .ground {
+    background:
+        linear-gradient(
+            to bottom,
+            #3f9b52,
+            #15512a
+        );
+}
+.day .flowers {
+    opacity: 1;
+}
+.show-message .message {
+    opacity: 1;
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+.show-poem .message {
+    opacity: 0;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+}
+.show-poem .poem {
+    opacity: 1;
+    transform:
+        translate(-50%, -50%)
+        translateY(0);
+}
+/* =========================
+   موبايل
+========================= */
 @media(max-width:600px) {
     .moon {
-        width: 70px;
-        height: 70px;
+        width: 75px;
+        height: 75px;
     }
     .moon::after {
-        width: 70px;
-        height: 70px;
-        left: 18px;
-        top: -5px;
+        width: 75px;
+        height: 75px;
     }
-    .poem-box {
-        padding: 22px 16px;
-        width: 92%;
+    .sun {
+        width: 85px;
+        height: 85px;
     }
     .poem {
+        padding: 23px 16px;
+    }
+    .poem-text {
         font-size: 15px;
         line-height: 2;
     }
-    .ground {
-        height: 22%;
+    .poem h2 {
+        font-size: 25px;
     }
 }
 </style>
 </head>
 <body>
-<div class="sky" id="sky"></div>
-<div class="moon"></div>
-<div class="intro">
-    <h1>صباح الخير يا روضة 🌹</h1>
-    <p>صباحٌ يليق بأجمل شخص بدأ يومي بابتسامته ✨</p>
-</div>
-<div class="ground"></div>
-<div class="flowers" id="flowers"></div>
-<div class="poem-box">
-    <h2>☀️ صباح الخير يا روضة</h2>
+<div class="scene">
+    <!-- النجوم -->
+    <div class="stars" id="stars"></div>
+    <!-- القمر -->
+    <div class="moon"></div>
+    <!-- الشمس -->
+    <div class="sun"></div>
+    <!-- الغيوم -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <!-- الأرض -->
+    <div class="ground"></div>
+    <!-- الورود -->
+    <div class="flowers" id="flowers"></div>
+    <!-- رسالة الصباح -->
+    <div class="message">
+        <h1>
+            صباح الخير يا روضة 🌹
+        </h1>
+        <p>
+            انتهى الليل... وبدأ صباح يليق فيكي ☀️
+        </p>
+    </div>
+    <!-- القصيدة -->
     <div class="poem">
-        صباحُ الخيرِ يا أجملَ صباحٍ<br>
-        ويا حلمًا يزيّنُ لي الصباحا<br><br>
-        إذا أشرقتْ شمسُ اليومِ قلتُ<br>
-        لعلَّ الشمسَ تشبهُكِ قليلاً<br><br>
-        ولكن كيفَ تشبهُكِ النجومُ؟<br>
-        وأنتِ من النجومِ لها جمالا<br><br>
-        صباحُكِ وردٌ يفوحُ حبًا<br>
-        وصباحُكِ فرحٌ لا ينتهي<br><br>
-        وأتمنى أن يكونَ أولُ شيءٍ<br>
-        يوصلكِ اليومَ... ابتسامة ❤️
+        <h2>
+            ☀️ صباح الخير يا روضة
+        </h2>
+        <div class="poem-text">
+            صباحُ الخيرِ يا أجملَ صباحٍ<br>
+            ويا وردًا يزيّنُ كلَّ دربِ<br><br>
+            إذا أشرقتْ شمسُ اليومِ قلتُ<br>
+            لعلَّ الشمسَ جاءت من عينيكِ<br><br>
+            وإن سألتِ الصباحَ عن الأماني<br>
+            سيخبرُكِ بأنكِ أجملُ أمنيّة<br><br>
+            صباحُكِ ضحكةٌ تمحو التعبَ<br>
+            وصباحُكِ وردٌ لا يذبلُ أبدًا<br><br>
+            فصباحُ الخيرِ يا روضةُ،<br>
+            ويا أولَ شيءٍ تمنّيتُ أن يبتسمَ له يومي ❤️
+        </div>
+        <div class="signature">
+            — إلى روضة 🌹
+        </div>
     </div>
-    <div class="signature">
-        — إلى روضة، صاحبة أجمل صباح 🌹
-    </div>
+    <!-- زر البداية -->
+    <button class="start-btn" onclick="startMorning()">
+        🌙 ابدئي الصباح
+    </button>
 </div>
-<button class="restart" onclick="restartScene()">
-    🌙 أعيدي رسم الصباح
-</button>
 <script>
-/* إنشاء النجوم */
-function createStars() {
-    const sky = document.getElementById("sky");
-    sky.innerHTML = "";
-    for (let i = 0; i < 75; i++) {
-        const star = document.createElement("div");
-        star.className = "star";
-        star.style.top = Math.random() * 60 + "%";
-        star.style.left = Math.random() * 100 + "%";
-        star.style.animationDelay =
-            (Math.random() * 4 + 1) + "s";
-        const size = Math.random() * 4 + 2;
-        star.style.width = size + "px";
-        star.style.height = size + "px";
-        sky.appendChild(star);
-    }
+/* =========================
+   إنشاء النجوم
+========================= */
+const stars = document.getElementById("stars");
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.top =
+        Math.random() * 65 + "%";
+    star.style.left =
+        Math.random() * 100 + "%";
+    const size =
+        Math.random() * 3 + 2;
+    star.style.width =
+        size + "px";
+    star.style.height =
+        size + "px";
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+    stars.appendChild(star);
 }
-/* إنشاء الورود */
-function createFlowers() {
-    const container = document.getElementById("flowers");
-    container.innerHTML = "";
-    const positions = [8, 20, 32, 47, 62, 75, 88];
-    positions.forEach((position, index) => {
-        const flower = document.createElement("div");
-        flower.className = "flower";
-        flower.style.left = position + "%";
-        flower.style.animationDelay =
-            (index * 0.35 + 3) + "s";
-        flower.innerHTML = `
-            <div class="rose"></div>
-            <div class="stem"></div>
-            <div class="leaf left"></div>
-            <div class="leaf right"></div>
-        `;
-        container.appendChild(flower);
-    });
-}
-/* التشغيل */
-function startScene() {
-    createStars();
-    createFlowers();
-}
-startScene();
-/* إعادة المشهد */
-function restartScene() {
-    const poem = document.querySelector(".poem-box");
-    const intro = document.querySelector(".intro");
-    const moon = document.querySelector(".moon");
-    poem.style.animation = "none";
-    intro.style.animation = "none";
-    moon.style.animation = "none";
-    void poem.offsetWidth;
-    poem.style.animation = "poemAppear 2s 5s forwards";
-    intro.style.animation = "introFade 3s forwards";
-    moon.style.animation = "moonAppear 2s 2s forwards";
-    createStars();
-    createFlowers();
+/* =========================
+   إنشاء الورود
+========================= */
+const flowers =
+    document.getElementById("flowers");
+const positions =
+    [5, 17, 30, 44, 58, 72, 85, 94];
+positions.forEach((pos, index) => {
+    const flower =
+        document.createElement("div");
+    flower.className =
+        "flower";
+    flower.style.left =
+        pos + "%";
+    flower.style.transform =
+        `scale(${0.65 + Math.random() * 0.45})`;
+    flower.innerHTML = `
+        <div class="rose"></div>
+        <div class="stem"></div>
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+    `;
+    flowers.appendChild(flower);
+});
+/* =========================
+   بداية التحول
+========================= */
+function startMorning() {
+    const button =
+        document.querySelector(".start-btn");
+    button.style.opacity = "0";
+    button.style.pointerEvents = "none";
+    /*
+       أول 4 ثواني:
+       الليل والنجوم والقمر
+       بعدها يبدأ التحول
+    */
+    setTimeout(() => {
+        document.body.classList.add("day");
+    }, 1000);
+    /*
+       بعد 6 ثواني تظهر
+       رسالة صباح الخير
+    */
+    setTimeout(() => {
+        document.body.classList.add(
+            "show-message"
+        );
+    }, 6000);
+    /*
+       بعد 10 ثواني تختفي الرسالة
+       وتظهر القصيدة
+    */
+    setTimeout(() => {
+        document.body.classList.remove(
+            "show-message"
+        );
+        document.body.classList.add(
+            "show-poem"
+        );
+    }, 10000);
 }
 </script>
 </body>
