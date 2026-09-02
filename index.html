@@ -16,7 +16,7 @@ body {
     font-family: Tahoma, Arial, sans-serif;
 }
 /* =========================
-   السماء
+   المشهد الأساسي
 ========================= */
 .scene {
     position: fixed;
@@ -29,8 +29,7 @@ body {
             #07152d 55%,
             #142c43 100%
         );
-    transition:
-        background 5s ease-in-out;
+    transition: background 5s ease-in-out;
 }
 /* =========================
    النجوم
@@ -114,8 +113,7 @@ body {
     background: rgba(255,255,255,.75);
     border-radius: 50px;
     opacity: 0;
-    transition:
-        opacity 4s ease;
+    transition: opacity 4s ease;
 }
 .cloud::before,
 .cloud::after {
@@ -159,7 +157,9 @@ body {
             #173d26,
             #071d13
         );
-    border-radius: 50% 50% 0 0 / 18% 18% 0 0;
+    border-radius:
+        50% 50% 0 0 /
+        18% 18% 0 0;
     transition: background 5s ease;
 }
 /* =========================
@@ -203,7 +203,9 @@ body {
 .leaf2 {
     right: -2px;
     bottom: 70px;
-    transform: rotate(25deg) scaleX(-1);
+    transform:
+        rotate(25deg)
+        scaleX(-1);
 }
 .rose {
     position: absolute;
@@ -243,7 +245,7 @@ body {
         0 0 15px rgba(255,100,130,.5);
 }
 /* =========================
-   رسالة الصباح
+   رسالة صباح الخير
 ========================= */
 .message {
     position: absolute;
@@ -261,14 +263,16 @@ body {
     z-index: 10;
 }
 .message h1 {
-    font-size: clamp(35px, 9vw, 75px);
-    color: white;
+    font-size:
+        clamp(35px, 9vw, 75px);
+    color: #ffffff;
     text-shadow:
         0 3px 20px rgba(0,0,0,.3);
 }
 .message p {
     margin-top: 15px;
-    font-size: clamp(17px, 4vw, 24px);
+    font-size:
+        clamp(17px, 4vw, 24px);
     color: #fff5df;
 }
 /* =========================
@@ -284,9 +288,15 @@ body {
         translateY(40px);
     width: min(92%, 650px);
     padding: 30px 25px;
-    background: rgba(255,255,255,.13);
-    border: 1px solid rgba(255,255,255,.3);
-    backdrop-filter: blur(15px);
+    /*
+       خلفية فاتحة حتى تكون
+       القصيدة واضحة بالنهار
+    */
+    background: rgba(255,255,255,.82);
+    border: 2px solid rgba(0,0,0,.12);
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.15);
+    backdrop-filter: blur(12px);
     border-radius: 25px;
     text-align: center;
     opacity: 0;
@@ -294,20 +304,25 @@ body {
         opacity 2s ease,
         transform 2s ease;
 }
+/* عنوان القصيدة */
 .poem h2 {
-    color: #fff0b5;
+    color: #111111;
     margin-bottom: 20px;
     font-size: 30px;
 }
+/* نص القصيدة */
 .poem-text {
-    color: white;
+    color: #000000;
     font-size: 18px;
     line-height: 2.1;
+    font-weight: 500;
 }
+/* التوقيع */
 .signature {
     margin-top: 20px;
-    color: #ffe0e8;
+    color: #111111;
     font-size: 17px;
+    font-weight: bold;
 }
 /* =========================
    الزر
@@ -319,9 +334,12 @@ body {
     left: 50%;
     transform: translateX(-50%);
     padding: 13px 25px;
-    border: 1px solid rgba(255,255,255,.3);
+    border:
+        1px solid
+        rgba(255,255,255,.3);
     border-radius: 30px;
-    background: rgba(255,255,255,.12);
+    background:
+        rgba(255,255,255,.12);
     color: white;
     font-size: 15px;
     cursor: pointer;
@@ -329,13 +347,14 @@ body {
     transition: .3s;
 }
 .start-btn:hover {
-    background: rgba(255,255,255,.25);
+    background:
+        rgba(255,255,255,.25);
     transform:
         translateX(-50%)
         scale(1.05);
 }
 /* =========================
-   مرحلة النهار
+   عند تحول الليل إلى النهار
 ========================= */
 .day .scene {
     background:
@@ -373,12 +392,18 @@ body {
 .day .flowers {
     opacity: 1;
 }
+/* =========================
+   ظهور الرسالة
+========================= */
 .show-message .message {
     opacity: 1;
     transform:
         translate(-50%, -50%)
         scale(1);
 }
+/* =========================
+   ظهور القصيدة
+========================= */
 .show-poem .message {
     opacity: 0;
     transform:
@@ -466,7 +491,9 @@ body {
         </div>
     </div>
     <!-- زر البداية -->
-    <button class="start-btn" onclick="startMorning()">
+    <button
+        class="start-btn"
+        onclick="startMorning()">
         🌙 ابدئي الصباح
     </button>
 </div>
@@ -474,9 +501,11 @@ body {
 /* =========================
    إنشاء النجوم
 ========================= */
-const stars = document.getElementById("stars");
+const stars =
+    document.getElementById("stars");
 for (let i = 0; i < 100; i++) {
-    const star = document.createElement("div");
+    const star =
+        document.createElement("div");
     star.className = "star";
     star.style.top =
         Math.random() * 65 + "%";
@@ -499,7 +528,7 @@ const flowers =
     document.getElementById("flowers");
 const positions =
     [5, 17, 30, 44, 58, 72, 85, 94];
-positions.forEach((pos, index) => {
+positions.forEach((pos) => {
     const flower =
         document.createElement("div");
     flower.className =
@@ -517,34 +546,24 @@ positions.forEach((pos, index) => {
     flowers.appendChild(flower);
 });
 /* =========================
-   بداية التحول
+   بدء الصباح
 ========================= */
 function startMorning() {
     const button =
         document.querySelector(".start-btn");
     button.style.opacity = "0";
     button.style.pointerEvents = "none";
-    /*
-       أول 4 ثواني:
-       الليل والنجوم والقمر
-       بعدها يبدأ التحول
-    */
+    /* يبدأ تحول الليل للنهار */
     setTimeout(() => {
         document.body.classList.add("day");
     }, 1000);
-    /*
-       بعد 6 ثواني تظهر
-       رسالة صباح الخير
-    */
+    /* تظهر رسالة صباح الخير */
     setTimeout(() => {
         document.body.classList.add(
             "show-message"
         );
     }, 6000);
-    /*
-       بعد 10 ثواني تختفي الرسالة
-       وتظهر القصيدة
-    */
+    /* تظهر القصيدة */
     setTimeout(() => {
         document.body.classList.remove(
             "show-message"
