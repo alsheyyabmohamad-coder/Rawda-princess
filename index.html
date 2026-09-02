@@ -3,40 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>صباح الخير يا سدين ❤️</title>
+<title>صباح الخير يا روضة 🌙🌹</title>
 <style>
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: "Arial", sans-serif;
-}
 body {
-    background: #05091c;
-    transition: background 4s ease;
+    overflow: hidden;
+    min-height: 100vh;
+    font-family: Tahoma, Arial, sans-serif;
 }
-/* =========================
-   السماء
-========================= */
-.sky {
+.scene {
     position: fixed;
     inset: 0;
+    overflow: hidden;
     background:
-        radial-gradient(circle at 50% 20%, #18265a 0%, #090d2b 45%, #02030d 100%);
-    transition: 5s ease;
-    z-index: -5;
+        linear-gradient(
+            to bottom,
+            #020817 0%,
+            #07152d 55%,
+            #142c43 100%
+        );
+    transition: background 5s ease-in-out;
 }
-/* =========================
-   النجوم
-========================= */
+/* النجوم */
 .stars {
-    position: fixed;
+    position: absolute;
     inset: 0;
-    transition: 4s ease;
+    transition: opacity 4s ease;
 }
 .star {
     position: absolute;
@@ -44,376 +40,656 @@ body {
     height: 3px;
     background: white;
     border-radius: 50%;
+    box-shadow: 0 0 8px white;
     animation: twinkle 2s infinite alternate;
 }
 @keyframes twinkle {
     from {
-        opacity: .2;
+        opacity: .25;
         transform: scale(.7);
     }
     to {
         opacity: 1;
-        transform: scale(1.3);
+        transform: scale(1.4);
     }
 }
-/* =========================
-   القمر
-========================= */
+/* القمر */
 .moon {
     position: absolute;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    background: #fff9d8;
-    box-shadow:
-        0 0 30px #fff5b5,
-        0 0 80px rgba(255,245,181,.4);
     top: 12%;
-    left: 15%;
+    left: 12%;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    background: #fff5c4;
+    box-shadow:
+        0 0 25px #fff5c4,
+        0 0 70px rgba(255,245,196,.35);
     transition:
-        top 5s ease,
-        left 5s ease,
-        opacity 4s ease;
+        opacity 4s ease,
+        transform 5s ease;
 }
-/* =========================
-   الشمس
-========================= */
+.moon::after {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 25px;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    background: #020817;
+}
+/* الشمس */
 .sun {
     position: absolute;
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: #ffd86b;
+    right: 12%;
+    top: 100%;
+    background: #ffd85a;
     box-shadow:
-        0 0 40px #ffd86b,
-        0 0 100px rgba(255,216,107,.5);
-    right: 15%;
-    bottom: -150px;
-    transition: bottom 6s ease;
+        0 0 30px #ffd85a,
+        0 0 90px rgba(255,216,90,.5);
+    transition: top 5s ease;
+    opacity: 0;
 }
-/* =========================
-   السحب
-========================= */
+/* الغيوم */
 .cloud {
     position: absolute;
     width: 180px;
     height: 55px;
-    background: rgba(255,255,255,.8);
+    background: rgba(255,255,255,.75);
     border-radius: 50px;
     opacity: 0;
-    transition: opacity 5s ease;
+    transition: opacity 4s ease;
 }
-.cloud:before,
-.cloud:after {
+.cloud::before,
+.cloud::after {
     content: "";
     position: absolute;
     background: inherit;
     border-radius: 50%;
 }
-.cloud:before {
+.cloud::before {
     width: 70px;
     height: 70px;
-    left: 25px;
     top: -35px;
+    left: 30px;
 }
-.cloud:after {
+.cloud::after {
     width: 90px;
     height: 90px;
-    right: 20px;
     top: -45px;
+    right: 25px;
 }
 .cloud1 {
-    top: 18%;
-    left: -200px;
+    top: 20%;
+    left: 10%;
 }
 .cloud2 {
     top: 30%;
-    right: -200px;
+    right: 8%;
+    transform: scale(.7);
 }
-/* =========================
-   الأرض
-========================= */
+/* الأرض */
 .ground {
     position: absolute;
-    bottom: -150px;
-    left: 0;
+    bottom: 0;
     width: 100%;
-    height: 150px;
-    background: linear-gradient(#75b84c, #3c8d36);
-    transition: bottom 5s ease;
+    height: 25%;
+    background:
+        linear-gradient(
+            to bottom,
+            #173d26,
+            #071d13
+        );
+    border-radius:
+        50% 50% 0 0 /
+        18% 18% 0 0;
+    transition: background 5s ease;
 }
-/* =========================
-   الزهور
-========================= */
+/* الورود */
 .flowers {
     position: absolute;
-    bottom: -80px;
-    left: 0;
+    bottom: 0;
     width: 100%;
-    text-align: center;
-    font-size: 45px;
-    transition: bottom 5s ease;
+    height: 230px;
+    opacity: 0;
+    transition: opacity 3s ease;
 }
-/* =========================
-   المحتوى
-========================= */
-.content {
+.flower {
     position: absolute;
+    bottom: 20px;
+    width: 50px;
+    height: 160px;
+}
+.stem {
+    position: absolute;
+    bottom: 0;
+    left: 23px;
+    width: 5px;
+    height: 120px;
+    background: #4d9b58;
+    border-radius: 10px;
+}
+.leaf {
+    position: absolute;
+    width: 35px;
+    height: 17px;
+    background: #55a85e;
+    border-radius: 100% 0 100% 0;
+}
+.leaf1 {
+    left: -3px;
+    bottom: 45px;
+    transform: rotate(-25deg);
+}
+.leaf2 {
+    right: -2px;
+    bottom: 70px;
+    transform:
+        rotate(25deg)
+        scaleX(-1);
+}
+.rose {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle at center,
+            #ffd1d9 0 10%,
+            transparent 11%
+        ),
+        radial-gradient(
+            circle at 30% 35%,
+            #ff718b 0 28%,
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 70% 35%,
+            #ff5d7c 0 28%,
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 35% 70%,
+            #ff5274 0 28%,
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            #ff6685 0 28%,
+            transparent 29%
+        );
+    box-shadow:
+        0 0 15px rgba(255,100,130,.5);
+}
+/* رسالة صباح الخير */
+.message {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+    width: 90%;
+    text-align: center;
+    opacity: 0;
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
+    z-index: 10;
+}
+.message h1 {
+    font-size:
+        clamp(35px, 9vw, 75px);
+    color: #ffffff;
+    text-shadow:
+        0 3px 20px rgba(0,0,0,.3);
+}
+.message p {
+    margin-top: 15px;
+    font-size:
+        clamp(17px, 4vw, 24px);
+    color: #fff5df;
+}
+/* القصيدة */
+.poem {
+    position: absolute;
+    z-index: 20;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 650px;
-    text-align: center;
-    color: white;
-    transition: 2s ease;
-}
-.startBtn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    font-size: 18px;
-    cursor: pointer;
-    background: rgba(255,255,255,.15);
-    color: white;
-    border: 1px solid rgba(255,255,255,.4);
-    backdrop-filter: blur(10px);
-    transition: .3s;
-}
-.startBtn:hover {
-    transform: scale(1.08);
-}
-.greeting {
-    opacity: 0;
-    font-size: 42px;
-    font-weight: bold;
-    transition: 2s ease;
-    text-shadow:
-        0 3px 15px rgba(0,0,0,.3);
-}
-/* =========================
-   القصيدة
-========================= */
-.poem {
-    opacity: 0;
-    margin-top: 20px;
-    padding: 25px;
-    border-radius: 25px;
-    background: rgba(255,255,255,.75);
-    color: #111;
-    font-size: 20px;
-    line-height: 2;
+    transform:
+        translate(-50%, -50%)
+        translateY(40px);
+    width: min(92%, 650px);
+    max-height: 78vh;
+    overflow-y: auto;
+    padding: 30px 25px;
+    background: rgba(255,255,255,.88);
+    border: 2px solid rgba(0,0,0,.12);
     box-shadow:
         0 10px 40px rgba(0,0,0,.15);
-    transition: 2s ease;
-}
-/* =========================
-   السؤال
-========================= */
-.question {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 600px;
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
     text-align: center;
     opacity: 0;
-    pointer-events: none;
-    transition: 2s ease;
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
 }
-.question h2 {
-    font-size: 32px;
-    color: #222;
+.poem h2 {
+    color: #111111;
+    margin-bottom: 20px;
+    font-size: 30px;
 }
-.question p {
+.poem-text {
+    color: #000000;
     font-size: 18px;
-    color: #444;
+    line-height: 2.1;
+    font-weight: 500;
 }
+.signature {
+    margin-top: 20px;
+    color: #111111;
+    font-size: 17px;
+    font-weight: bold;
+}
+/* =========================
+   سؤال الحب
+========================= */
+.love-question {
+    position: absolute;
+    z-index: 30;
+    top: 50%;
+    left: 50%;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+    width: min(92%, 600px);
+    padding: 30px 22px;
+    background: rgba(255,255,255,.92);
+    border-radius: 28px;
+    text-align: center;
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.2);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+}
+.love-question h2 {
+    color: #111;
+    font-size: clamp(24px, 6vw, 35px);
+    margin-bottom: 10px;
+}
+.love-question p {
+    color: #333;
+    margin-bottom: 22px;
+    font-size: 16px;
+}
+/* الخيارات */
 .options {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 25px;
 }
 .option {
-    padding: 15px;
+    width: 100%;
+    padding: 14px;
     border: none;
-    border-radius: 25px;
-    background: white;
-    color: #222;
-    font-size: 18px;
+    border-radius: 18px;
+    background: #f1f1f1;
+    color: #111;
+    font-size: 16px;
     cursor: pointer;
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.1);
     transition: .3s;
 }
 .option:hover {
-    transform: scale(1.04);
+    transform: scale(1.03);
+    background: #e5e5e5;
 }
-.result {
+/* الرسالة بعد الإجابة */
+.answer {
     margin-top: 20px;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: bold;
-    min-height: 35px;
+    color: #111;
+    min-height: 25px;
+}
+/* ظهور سؤال الحب */
+.show-love .love-question {
+    opacity: 1;
+    pointer-events: auto;
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+/* إخفاء القصيدة */
+.show-love .poem {
+    opacity: 0;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+    pointer-events: none;
 }
 /* =========================
-   الوضع النهاري
+   الزر
 ========================= */
-.day .sky {
+.start-btn {
+    position: absolute;
+    z-index: 50;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 13px 25px;
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+    border-radius: 30px;
     background:
-        linear-gradient(#7ed6ff, #dff7ff);
+        rgba(255,255,255,.12);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: .3s;
+}
+.start-btn:hover {
+    background:
+        rgba(255,255,255,.25);
+    transform:
+        translateX(-50%)
+        scale(1.05);
+}
+/* =========================
+   النهار
+========================= */
+.day .scene {
+    background:
+        linear-gradient(
+            to bottom,
+            #55bde8 0%,
+            #a9e5f7 55%,
+            #dff7e5 100%
+        );
 }
 .day .stars {
     opacity: 0;
 }
 .day .moon {
     opacity: 0;
+    transform:
+        translateY(-120px)
+        scale(.7);
 }
 .day .sun {
-    bottom: 55%;
+    opacity: 1;
+    top: 10%;
 }
 .day .cloud {
     opacity: 1;
 }
-.day .cloud1 {
-    left: 10%;
-}
-.day .cloud2 {
-    right: 10%;
-}
 .day .ground {
-    bottom: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            #3f9b52,
+            #15512a
+        );
 }
 .day .flowers {
-    bottom: 20px;
+    opacity: 1;
+}
+/* رسالة الصباح */
+.show-message .message {
+    opacity: 1;
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+/* القصيدة */
+.show-poem .message {
+    opacity: 0;
+    transform:
+        translate(-50%, -50%)
+        scale(.8);
+}
+.show-poem .poem {
+    opacity: 1;
+    transform:
+        translate(-50%, -50%)
+        translateY(0);
+}
+/* =========================
+   موبايل
+========================= */
+@media(max-width:600px) {
+    .moon {
+        width: 75px;
+        height: 75px;
+    }
+    .moon::after {
+        width: 75px;
+        height: 75px;
+    }
+    .sun {
+        width: 85px;
+        height: 85px;
+    }
+    .poem {
+        padding: 23px 16px;
+        max-height: 75vh;
+    }
+    .poem-text {
+        font-size: 15px;
+        line-height: 2;
+    }
+    .poem h2 {
+        font-size: 25px;
+    }
+    .love-question {
+        padding: 25px 17px;
+    }
 }
 </style>
 </head>
 <body>
-<div class="sky"></div>
-<!-- النجوم -->
-<div class="stars">
-    <div class="star" style="top:8%;left:10%"></div>
-    <div class="star" style="top:15%;left:30%"></div>
-    <div class="star" style="top:12%;left:70%"></div>
-    <div class="star" style="top:25%;left:85%"></div>
-    <div class="star" style="top:35%;left:20%"></div>
-    <div class="star" style="top:42%;left:75%"></div>
-    <div class="star" style="top:55%;left:12%"></div>
-    <div class="star" style="top:65%;left:90%"></div>
-    <div class="star" style="top:75%;left:35%"></div>
-    <div class="star" style="top:85%;left:65%"></div>
-</div>
-<!-- القمر -->
-<div class="moon"></div>
-<!-- الشمس -->
-<div class="sun"></div>
-<!-- السحب -->
-<div class="cloud cloud1"></div>
-<div class="cloud cloud2"></div>
-<!-- الأرض -->
-<div class="ground"></div>
-<!-- الزهور -->
-<div class="flowers">
-    🌷 🌸 🌹 🌼 🌷 🌸 🌹
-</div>
-<!-- =========================
-     البداية
-========================= -->
-<div class="content" id="content">
-    <button class="startBtn" onclick="startMorning()">
+<div class="scene">
+    <!-- النجوم -->
+    <div class="stars" id="stars"></div>
+    <!-- القمر -->
+    <div class="moon"></div>
+    <!-- الشمس -->
+    <div class="sun"></div>
+    <!-- الغيوم -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <!-- الأرض -->
+    <div class="ground"></div>
+    <!-- الورود -->
+    <div class="flowers" id="flowers"></div>
+    <!-- رسالة الصباح -->
+    <div class="message">
+        <h1>
+            صباح الخير يا روضة 🌹
+        </h1>
+        <p>
+            انتهى الليل... وبدأ صباح يليق فيكي ☀️
+        </p>
+    </div>
+    <!-- =====================
+         القصيدة
+    ====================== -->
+    <div class="poem">
+        <h2>
+            ☀️ صباح الخير يا روضة
+        </h2>
+        <div class="poem-text">
+            صباحُ الخيرِ يا أجملَ صباحٍ<br>
+            ويا وردًا يزيّنُ كلَّ دربِ<br><br>
+            إذا أشرقتْ شمسُ اليومِ قلتُ<br>
+            لعلَّ الشمسَ جاءت من عينيكِ<br><br>
+            وإن سألتِ الصباحَ عن الأماني<br>
+            سيخبرُكِ بأنكِ أجملُ أمنيّة<br><br>
+            صباحُكِ ضحكةٌ تمحو التعبَ<br>
+            وصباحُكِ وردٌ لا يذبلُ أبدًا<br><br>
+            فصباحُ الخيرِ يا روضةُ،<br>
+            ويا أولَ شيءٍ تمنّيتُ أن يبتسمَ له يومي ❤️
+        </div>
+        <div class="signature">
+            — إلى روضة 🌹
+        </div>
+    </div>
+    <!-- =====================
+         سؤال الحب
+    ====================== -->
+    <div class="love-question">
+        <h2>
+            احزري قديش محمد بحبك؟ ❤️
+        </h2>
+        <p>
+            اختاري الإجابة الصح... إذا قدرتِ 😌
+        </p>
+        <div class="options">
+            <button
+                class="option"
+                onclick="wrongAnswer()">
+                شوي 🥹
+            </button>
+            <button
+                class="option"
+                onclick="wrongAnswer()">
+                كثير ❤️
+            </button>
+            <button
+                class="option"
+                onclick="wrongAnswer()">
+                أكثر مما بتتخيلي 🫣
+            </button>
+            <button
+                class="option"
+                onclick="correctAnswer()">
+                حب محمد ما إلو نهاية ❤️♾️
+            </button>
+        </div>
+        <div
+            class="answer"
+            id="answer">
+        </div>
+    </div>
+    <!-- زر البداية -->
+    <button
+        class="start-btn"
+        onclick="startMorning()">
         🌙 ابدئي الصباح
     </button>
-    <h1 class="greeting" id="greeting">
-        صباح الخير يا سدين 🌹
-    </h1>
-    <div class="poem" id="poem">
-        ☀️ صباح الخير يا سدين
-        <br><br>
-        صباحُ الخيرِ يا أجملَ صباحٍ
-        <br>
-        ويا وردًا يزيّنُ كلَّ دربِ
-        <br><br>
-        إذا أشرقتْ شمسُ اليومِ قلتُ
-        <br>
-        لعلَّ الشمسَ جاءت من عينيكِ
-        <br><br>
-        وإن سألتِ الصباحَ عن الأماني
-        <br>
-        سيخبرُكِ بأنكِ أجملُ أمنيّة
-        <br><br>
-        صباحُكِ ضحكةٌ تمحو التعبَ
-        <br>
-        وصباحُكِ وردٌ لا يذبلُ أبدًا
-        <br><br>
-        فصباحُ الخيرِ يا سدينُ،
-        <br>
-        ويا أولَ شيءٍ تمنّيتُ
-        أن يبتسمَ له يومي ❤️
-        <br><br>
-        — إلى سدين 🌹
-    </div>
-</div>
-<!-- =========================
-     السؤال النهائي
-========================= -->
-<div class="question" id="question">
-    <h2>
-        احزري قديش محمد بحبك؟ ❤️
-    </h2>
-    <p>
-        اختاري الإجابة الصح... إذا قدرتِ 😌
-    </p>
-    <div class="options">
-        <button class="option" onclick="wrong()">
-            شوي 🥹
-        </button>
-        <button class="option" onclick="wrong()">
-            كثير ❤️
-        </button>
-        <button class="option" onclick="wrong()">
-            أكثر مما بتتخيلي 🫣
-        </button>
-        <button class="option" onclick="correct()">
-            حب محمد ما إلو نهاية ❤️♾️
-        </button>
-    </div>
-    <div class="result" id="result"></div>
 </div>
 <script>
+/* =========================
+   إنشاء النجوم
+========================= */
+const stars =
+    document.getElementById("stars");
+for (let i = 0; i < 100; i++) {
+    const star =
+        document.createElement("div");
+    star.className = "star";
+    star.style.top =
+        Math.random() * 65 + "%";
+    star.style.left =
+        Math.random() * 100 + "%";
+    const size =
+        Math.random() * 3 + 2;
+    star.style.width =
+        size + "px";
+    star.style.height =
+        size + "px";
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+    stars.appendChild(star);
+}
+/* =========================
+   إنشاء الورود
+========================= */
+const flowers =
+    document.getElementById("flowers");
+const positions =
+    [5, 17, 30, 44, 58, 72, 85, 94];
+positions.forEach((pos) => {
+    const flower =
+        document.createElement("div");
+    flower.className =
+        "flower";
+    flower.style.left =
+        pos + "%";
+    flower.style.transform =
+        `scale(${0.65 + Math.random() * 0.45})`;
+    flower.innerHTML = `
+        <div class="rose"></div>
+        <div class="stem"></div>
+        <div class="leaf leaf1"></div>
+        <div class="leaf leaf2"></div>
+    `;
+    flowers.appendChild(flower);
+});
+/* =========================
+   بدء المشهد
+========================= */
 function startMorning() {
-    document.body.classList.add("day");
-    /* إخفاء الزر */
-    document.querySelector(".startBtn").style.opacity = "0";
-    /* بعد 6 ثواني تظهر صباح الخير */
+    const button =
+        document.querySelector(".start-btn");
+    button.style.opacity = "0";
+    button.style.pointerEvents =
+        "none";
+    /* يبدأ تحول الليل للنهار */
     setTimeout(() => {
-        document.getElementById("greeting").style.opacity = "1";
+        document.body.classList.add("day");
+    }, 1000);
+    /* رسالة صباح الخير */
+    setTimeout(() => {
+        document.body.classList.add(
+            "show-message"
+        );
     }, 6000);
-    /* بعد 10 ثواني تظهر القصيدة */
+    /* القصيدة */
     setTimeout(() => {
-        document.getElementById("poem").style.opacity = "1";
+        document.body.classList.remove(
+            "show-message"
+        );
+        document.body.classList.add(
+            "show-poem"
+        );
     }, 10000);
-    /* بعد 17 ثانية تختفي القصيدة ويظهر السؤال */
+    /* سؤال الحب بعد القصيدة */
     setTimeout(() => {
-        document.getElementById("content").style.opacity = "0";
-        setTimeout(() => {
-            document.getElementById("content").style.display = "none";
-            const question =
-                document.getElementById("question");
-            question.style.opacity = "1";
-            question.style.pointerEvents = "auto";
-        }, 1500);
+        document.body.classList.add(
+            "show-love"
+        );
     }, 17000);
 }
-/* إجابة خاطئة */
-function wrong() {
-    document.getElementById("result").innerHTML =
+/* =========================
+   إجابة غلط
+========================= */
+function wrongAnswer() {
+    const answer =
+        document.getElementById("answer");
+    answer.innerHTML =
         "غلط 😂❤️ جرّبي إجابة ثانية";
 }
-/* الإجابة الصحيحة */
-function correct() {
-    document.getElementById("result").innerHTML =
+/* =========================
+   الإجابة الصحيحة
+========================= */
+function correctAnswer() {
+    const answer =
+        document.getElementById("answer");
+    answer.innerHTML =
         "صح ❤️♾️ حب محمد إلك ما إلو نهاية.";
 }
 </script>
