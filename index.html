@@ -3,768 +3,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rawda ✦</title>
+<title>صباح الخير يا روضة 🌹</title>
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Tahoma,Arial,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-html{
-    scroll-behavior:smooth;
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Tahoma", Arial, sans-serif;
+    background: linear-gradient(to bottom, #07152d, #102b4d 55%, #1d4052);
+    color: white;
 }
-body{
-    background:#09090f;
-    color:white;
-    overflow-x:hidden;
+/* السماء */
+.sky {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
 }
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
+/* النجوم */
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: appearStar 1.5s forwards, twinkle 2s infinite alternate;
+}
+@keyframes appearStar {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: .9;
+        transform: scale(1);
+    }
+}
+@keyframes twinkle {
+    from { opacity: .35; }
+    to { opacity: 1; }
+}
+/* القمر */
+.moon {
+    position: absolute;
+    top: 10%;
+    left: 12%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #fff8cf;
+    box-shadow: 0 0 30px #fff4b0, 0 0 70px rgba(255,240,170,.4);
+    opacity: 0;
+    transform: translateY(-30px) scale(.5);
+    animation: moonAppear 2s 2s forwards;
+}
+.moon::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 25px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #07152d;
+}
+@keyframes moonAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* الأرض */
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 27%;
+    background: #081d18;
+    border-radius: 50% 50% 0 0 / 15% 15% 0 0;
+}
+/* الرسالة */
+.intro {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    z-index: 10;
+    animation: introFade 3s forwards;
+}
+.intro h1 {
+    font-size: clamp(34px, 8vw, 70px);
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(255,255,255,.4);
+}
+.intro p {
+    font-size: clamp(16px, 4vw, 22px);
+    color: #ffe9b0;
+}
+@keyframes introFade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* القصيدة */
+.poem-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90%, 650px);
+    padding: 30px;
+    background: rgba(4, 16, 30, .75);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 25px;
+    backdrop-filter: blur(12px);
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    animation: poemAppear 2s 5s forwards;
+}
+.poem-box h2 {
+    color: #ffd98a;
+    margin-bottom: 22px;
+    font-size: 30px;
+}
+.poem {
+    line-height: 2.2;
+    font-size: 18px;
+    color: #f7f4eb;
+}
+.signature {
+    margin-top: 20px;
+    color: #ffb7c5;
+    font-size: 18px;
+}
+@keyframes poemAppear {
+    to {
+        opacity: 1;
+    }
+}
+/* الورود */
+.flowers {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    height: 170px;
+    z-index: 5;
+}
+/* زهرة */
+.flower {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    animation: flowerGrow 2s forwards;
+}
+.stem {
+    width: 4px;
+    height: 100px;
+    background: #4f9b5b;
+    margin: auto;
+    border-radius: 10px;
+}
+.leaf {
+    position: absolute;
+    width: 30px;
+    height: 14px;
+    background: #5daa61;
+    border-radius: 100% 0 100% 0;
+}
+.leaf.left {
+    left: -25px;
+    bottom: 35px;
+    transform: rotate(-25deg);
+}
+.leaf.right {
+    right: -25px;
+    bottom: 55px;
+    transform: rotate(25deg) scaleX(-1);
+}
+.rose {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     background:
-    radial-gradient(circle at 20% 20%,#3b123b55,transparent 30%),
-    radial-gradient(circle at 80% 80%,#162d5555,transparent 30%);
-    pointer-events:none;
-    z-index:-1;
+        radial-gradient(circle at 50% 50%, #ffd1d9 0 10%, transparent 11%),
+        radial-gradient(circle at 30% 35%, #ff7892 0 28%, transparent 29%),
+        radial-gradient(circle at 70% 35%, #ff6f8a 0 28%, transparent 29%),
+        radial-gradient(circle at 35% 70%, #ff5274 0 28%, transparent 29%),
+        radial-gradient(circle at 70% 70%, #ff5c7c 0 28%, transparent 29%);
+    filter: drop-shadow(0 0 8px rgba(255,100,130,.5));
 }
-/* =========================
-   شريط التنقل
-========================= */
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:18px 30px;
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    background:#09090fcc;
-    backdrop-filter:blur(15px);
-    z-index:1000;
-}
-nav a{
-    color:#aaa;
-    text-decoration:none;
-    font-size:14px;
-    transition:.3s;
-}
-nav a:hover{
-    color:#e99bc1;
-}
-/* =========================
-   الصفحة الرئيسية
-========================= */
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:30px;
-}
-.hero-content{
-    animation:fade 1.5s ease;
-}
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(30px);
+@keyframes flowerGrow {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(.4);
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
-.hero .mini{
-    color:#bd79a1;
-    letter-spacing:4px;
-    margin-bottom:25px;
+/* زر */
+.restart {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.12);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.2);
+    transition: .3s;
 }
-.hero h1{
-    font-size:clamp(70px,15vw,140px);
-    font-weight:300;
+.restart:hover {
+    background: rgba(255,255,255,.22);
+    transform: translateX(-50%) scale(1.05);
 }
-.hero h1 span{
-    color:#df8fb7;
-}
-.hero p{
-    color:#aaa;
-    font-size:19px;
-    margin-top:20px;
-    line-height:2;
-}
-.start-btn{
-    display:inline-block;
-    margin-top:40px;
-    padding:15px 35px;
-    border-radius:50px;
-    border:1px solid #bd6792;
-    color:white;
-    text-decoration:none;
-    transition:.4s;
-}
-.start-btn:hover{
-    background:#bd6792;
-    transform:scale(1.05);
-}
-/* =========================
-   الأقسام
-========================= */
-section{
-    min-height:80vh;
-    padding:100px 7%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.container{
-    width:100%;
-    max-width:1000px;
-}
-.tag{
-    color:#bd79a1;
-    font-size:13px;
-    letter-spacing:3px;
-    margin-bottom:15px;
-}
-.title{
-    font-size:40px;
-    font-weight:400;
-    margin-bottom:25px;
-}
-.description{
-    color:#999;
-    line-height:2;
-}
-/* =========================
-   التاريخ
-========================= */
-.date-card{
-    margin-top:35px;
-    padding:40px;
-    border-radius:25px;
-    background:#ffffff08;
-    border:1px solid #ffffff12;
-    text-align:center;
-}
-.date{
-    font-size:45px;
-    color:#e39abd;
-    margin:15px 0;
-}
-.date-text{
-    color:#aaa;
-}
-/* =========================
-   الأغنية
-========================= */
-.music-box{
-    margin-top:35px;
-    padding:35px;
-    border-radius:25px;
-    background:linear-gradient(135deg,#ffffff08,#ffffff03);
-    border:1px solid #ffffff12;
-    text-align:center;
-}
-.music-icon{
-    font-size:55px;
-    margin-bottom:20px;
-}
-.music-box h3{
-    font-size:25px;
-    font-weight:400;
-}
-.music-box p{
-    color:#888;
-    margin-top:10px;
-}
-.music-btn{
-    margin-top:25px;
-    padding:13px 30px;
-    border-radius:50px;
-    border:0;
-    background:#d17da5;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-    transition:.3s;
-}
-.music-btn:hover{
-    transform:scale(1.06);
-    background:#bd6792;
-}
-.music-status{
-    margin-top:15px;
-    color:#bd79a1;
-    font-size:13px;
-}
-/* =========================
-   الشعر
-========================= */
-.poem-box{
-    margin-top:40px;
-    padding:45px;
-    border-right:2px solid #bd6792;
-    background:#ffffff05;
-    border-radius:15px;
-}
-.poem{
-    font-size:23px;
-    line-height:2.5;
-}
-.poem-author{
-    margin-top:30px;
-    color:#bd79a1;
-}
-/* =========================
-   العداد
-========================= */
-.counter-box{
-    margin-top:35px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-.counter-item{
-    background:#ffffff08;
-    border:1px solid #ffffff10;
-    border-radius:20px;
-    padding:30px 10px;
-    text-align:center;
-}
-.counter-number{
-    font-size:35px;
-    color:#dd91b5;
-}
-.counter-label{
-    color:#888;
-    margin-top:8px;
-}
-/* =========================
-   السؤال
-========================= */
-.question{
-    margin-top:30px;
-    padding:30px;
-    background:#ffffff07;
-    border-radius:20px;
-    border:1px solid #ffffff10;
-}
-.question h3{
-    font-weight:400;
-    margin-bottom:20px;
-}
-.options{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
-.option{
-    padding:12px 20px;
-    border-radius:30px;
-    border:1px solid #ffffff20;
-    background:transparent;
-    color:white;
-    cursor:pointer;
-    transition:.3s;
-}
-.option:hover{
-    background:#bd6792;
-}
-.answer{
-    display:none;
-    margin-top:20px;
-    color:#df9ebe;
-}
-/* =========================
-   الرسالة المخفية
-========================= */
-.secret-btn{
-    margin-top:30px;
-    padding:15px 30px;
-    border-radius:50px;
-    background:transparent;
-    border:1px solid #bd6792;
-    color:white;
-    cursor:pointer;
-}
-.secret{
-    display:none;
-    margin-top:25px;
-    padding:30px;
-    border-radius:20px;
-    background:#bd679211;
-    color:#ccc;
-    line-height:2;
-}
-/* =========================
-   القلب
-========================= */
-.love-section{
-    min-height:60vh;
-    text-align:center;
-}
-.love-container{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-.love-heart{
-    font-size:90px;
-    cursor:pointer;
-    animation:heartbeat 1.4s infinite;
-    transition:.3s;
-    user-select:none;
-}
-.love-heart:hover{
-    transform:scale(1.15);
-}
-@keyframes heartbeat{
-    0%,100%{
-        transform:scale(1);
+/* موبايل */
+@media(max-width:600px) {
+    .moon {
+        width: 70px;
+        height: 70px;
     }
-    50%{
-        transform:scale(1.15);
+    .moon::after {
+        width: 70px;
+        height: 70px;
+        left: 18px;
+        top: -5px;
     }
-}
-.love-message{
-    opacity:0;
-    transform:translateY(20px) scale(.8);
-    margin-top:25px;
-    font-size:35px;
-    color:#df91b7;
-    font-weight:bold;
-    transition:.6s;
-    pointer-events:none;
-}
-.love-message.show{
-    opacity:1;
-    transform:translateY(0) scale(1);
-}
-/* =========================
-   النهاية
-========================= */
-.final{
-    min-height:100vh;
-    text-align:center;
-}
-.final h2{
-    font-size:65px;
-    font-weight:300;
-    color:#df91b7;
-}
-.final p{
-    margin-top:20px;
-    color:#888;
-}
-/* =========================
-   الموبايل
-========================= */
-@media(max-width:600px){
-    nav{
-        gap:15px;
-        padding:15px 10px;
-        overflow-x:auto;
-        justify-content:flex-start;
-        white-space:nowrap;
+    .poem-box {
+        padding: 22px 16px;
+        width: 92%;
     }
-    nav a{
-        font-size:11px;
-        flex-shrink:0;
+    .poem {
+        font-size: 15px;
+        line-height: 2;
     }
-    section{
-        padding:80px 5%;
-    }
-    .title{
-        font-size:32px;
-    }
-    .counter-box{
-        grid-template-columns:1fr;
-    }
-    .poem{
-        font-size:19px;
-    }
-    .date{
-        font-size:34px;
-    }
-    .love-heart{
-        font-size:75px;
-    }
-    .love-message{
-        font-size:28px;
+    .ground {
+        height: 22%;
     }
 }
 </style>
 </head>
 <body>
-<!-- =========================
-     شريط التنقل
-========================= -->
-<nav>
-<a href="#start">البداية</a>
-<a href="#first">أول تواصل</a>
-<a href="#music-section">أغنية</a>
-<a href="#poem">قصيدة إهداء للأميرة</a>
-<a href="#moments">التفاصيل</a>
-</nav>
-<!-- =========================
-     البداية
-========================= -->
-<section class="hero" id="start">
-<div class="hero-content">
-<div class="mini">
-    A LITTLE PLACE FOR
+<div class="sky" id="sky"></div>
+<div class="moon"></div>
+<div class="intro">
+    <h1>صباح الخير يا روضة 🌹</h1>
+    <p>صباحٌ يليق بأجمل شخص بدأ يومي بابتسامته ✨</p>
 </div>
-<h1>
-    <span>R</span>awda
-</h1>
-<p>
-    يا أميرتي الحلوة يا أحلى اشي بحياتي
-</p>
-<a href="#first" class="start-btn">
-    ابدأي ✦
-</a>
-</div>
-</section>
-<!-- =========================
-     أول مرة حكينا
-========================= -->
-<section id="first">
-<div class="container">
-<div class="tag">
-    01 — FIRST CHAT
-</div>
-<h2 class="title">
-    أول مرة حكيت معك، الشات الي غير حياتي
-</h2>
-<p class="description">
-    كل قصة إلها بداية...
-    وهذه بداية الحكاية.
-</p>
-<div class="date-card">
-<div class="date">
-    31 / 12 / 2025
-</div>
-<div class="date-text">
-    أول مرة حكيت مع البرنسس
-</div>
-</div>
-</div>
-</section>
-<!-- =========================
-     الأغنية
-========================= -->
-<section id="music-section">
-<div class="container">
-<div class="tag">
-    02 — OUR SONG
-</div>
-<h2 class="title">
-    أغنية من محمد إلك 🎵
-</h2>
-<p class="description">
-    أغنية كاظم الساهر — تاريخ ميلادي
-</p>
-<div class="music-box">
-<div class="music-icon">
-    🎵
-</div>
-<h3>
-    تاريخ ميلادي — كاظم الساهر
-</h3>
-<p>
-    شغّلي الأغنية يا أميرتي
-</p>
-<button
-    class="music-btn"
-    onclick="playMusic()"
-    id="musicButton"
->
-    ▶ تشغيل الأغنية
-</button>
-<div class="music-status" id="musicStatus">
-    جاهزة للتشغيل 🎧
-</div>
-<audio id="music" preload="metadata">
-    <source
-        src="Kadim Al Sahir - Tareekho Meeladi - (320 Kbps).mp3"
-        type="audio/mpeg"
-    >
-    متصفحك لا يدعم تشغيل الصوت.
-</audio>
-</div>
-</div>
-</section>
-<!-- =========================
-     الشعر
-========================= -->
-<section id="poem">
-<div class="container">
-<div class="tag">
-    03 — POETRY
-</div>
-<h2 class="title">
-    حكي صغير إلك
-</h2>
+<div class="ground"></div>
+<div class="flowers" id="flowers"></div>
 <div class="poem-box">
-<div class="poem">
-يا روضةُ، يا اسمًا إذا مرَّ بخاطري<br>
-أضاءَ من الذكرى طريقًا في المدى
-<br><br>
-ولكِ من الحروفِ قصيدةٌ لا تنتهي<br>
-كلما قلتُ انتهيتُ... أعودُ من ابتدا
-<br><br>
-إن كان للجمالِ مكانٌ في الكلام<br>
-فبعضُ الكلامِ حين يُقالُ... يُشبهكِ
+    <h2>☀️ صباح الخير يا روضة</h2>
+    <div class="poem">
+        صباحُ الخيرِ يا أجملَ صباحٍ<br>
+        ويا حلمًا يزيّنُ لي الصباحا<br><br>
+        إذا أشرقتْ شمسُ اليومِ قلتُ<br>
+        لعلَّ الشمسَ تشبهُكِ قليلاً<br><br>
+        ولكن كيفَ تشبهُكِ النجومُ؟<br>
+        وأنتِ من النجومِ لها جمالا<br><br>
+        صباحُكِ وردٌ يفوحُ حبًا<br>
+        وصباحُكِ فرحٌ لا ينتهي<br><br>
+        وأتمنى أن يكونَ أولُ شيءٍ<br>
+        يوصلكِ اليومَ... ابتسامة ❤️
+    </div>
+    <div class="signature">
+        — إلى روضة، صاحبة أجمل صباح 🌹
+    </div>
 </div>
-<div class="poem-author">
-    — إلى أميرتي روضة ❤️
-</div>
-</div>
-</div>
-</section>
-<!-- =========================
-     عداد الأيام
-========================= -->
-<section id="moments">
-<div class="container">
-<div class="tag">
-    04 — TIME
-</div>
-<h2 class="title">
-    وقديش صار؟ ⏳
-</h2>
-<p class="description">
-    من أول يوم حكينا لليوم...
-</p>
-<div class="counter-box">
-<div class="counter-item">
-<div class="counter-number" id="days">
-    0
-</div>
-<div class="counter-label">
-    يوم
-</div>
-</div>
-<div class="counter-item">
-<div class="counter-number" id="hours">
-    0
-</div>
-<div class="counter-label">
-    ساعة
-</div>
-</div>
-<div class="counter-item">
-<div class="counter-number" id="minutes">
-    0
-</div>
-<div class="counter-label">
-    دقيقة
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- =========================
-     سؤال تفاعلي
-========================= -->
-<section>
-<div class="container">
-<div class="tag">
-    05 — JUST FOR FUN
-</div>
-<h2 class="title">
-    سؤال صغير 😌
-</h2>
-<div class="question">
-<h3>
-    شو أحلى اشي فيكي؟
-</h3>
-<div class="options">
-<button class="option" onclick="answer('الضحكة ❤️')">
-    الضحكة
+<button class="restart" onclick="restartScene()">
+    🌙 أعيدي رسم الصباح
 </button>
-<button class="option" onclick="answer('العيون 🫶')">
-    العيون
-</button>
-<button class="option" onclick="answer('الشخصية ✨')">
-    الشخصية
-</button>
-<button class="option" onclick="answer('كلهم 😭')">
-    كلهم
-</button>
-</div>
-<div class="answer" id="answer">
-</div>
-</div>
-</div>
-</section>
-<!-- =========================
-     رسالة مخفية
-========================= -->
-<section>
-<div class="container">
-<div class="tag">
-    06 — SECRET
-</div>
-<h2 class="title">
-    في شيء مخبّى هون 👀
-</h2>
-<p class="description">
-    إذا وصلتي لهون... اضغطي.
-</p>
-<button class="secret-btn" onclick="showSecret()">
-    افتحي ✦
-</button>
-<div class="secret" id="secret">
-يا عيوني،
-<br><br>
-ما بدي أحكي كلام كثير...
-<br>
-بس بكفي وجودك بحياتي.
-<br><br>
-والله ما عمري حلاقي زيك،
-يا برنسس حياتي كلها،
-يا نور حياتي إنتِ.
-<br><br>
-وإنتِ أحلى اشي بحياتي. ❤️
-</div>
-</div>
-</section>
-<!-- =========================
-     القلب
-========================= -->
-<section class="love-section">
-<div class="love-container">
-<div
-    class="love-heart"
-    onclick="showLove()"
-    title="اضغطي ❤️"
->
-    ❤️
-</div>
-<div class="love-message" id="loveMessage">
-    I LOVE YOU ❤️
-</div>
-</div>
-</section>
-<!-- =========================
-     النهاية
-========================= -->
-<section class="final">
-<div class="container">
-<h2>
-    Rawda ✦
-</h2>
-<p>
-    إلى أميرتي، من شخص يحب البرنسس.
-</p>
-</div>
-</section>
 <script>
-/* =========================
-   تشغيل الأغنية
-========================= */
-function playMusic(){
-    const music =
-        document.getElementById("music");
-    const button =
-        document.getElementById("musicButton");
-    const status =
-        document.getElementById("musicStatus");
-    if(music.paused){
-        music.play()
-        .then(() => {
-            button.innerHTML =
-                "⏸ إيقاف الأغنية";
-            status.innerText =
-                "الأغنية تعمل الآن 🎵";
-        })
-        .catch(() => {
-            status.innerText =
-                "تأكد أن ملف الأغنية موجود بجانب index.html";
-        });
-    }else{
-        music.pause();
-        button.innerHTML =
-            "▶ تشغيل الأغنية";
-        status.innerText =
-            "تم إيقاف الأغنية";
+/* إنشاء النجوم */
+function createStars() {
+    const sky = document.getElementById("sky");
+    sky.innerHTML = "";
+    for (let i = 0; i < 75; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.top = Math.random() * 60 + "%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDelay =
+            (Math.random() * 4 + 1) + "s";
+        const size = Math.random() * 4 + 2;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        sky.appendChild(star);
     }
 }
-/* عند انتهاء الأغنية */
-document
-.getElementById("music")
-.addEventListener("ended", function(){
-    document.getElementById("musicButton").innerHTML =
-        "▶ تشغيل الأغنية";
-    document.getElementById("musicStatus").innerText =
-        "انتهت الأغنية 🎵";
-});
-/* =========================
-   عداد الأيام
-========================= */
-const firstDate =
-    new Date("2025-12-31T00:00:00");
-function updateCounter(){
-    const now =
-        new Date();
-    const difference =
-        now - firstDate;
-    const totalMinutes =
-        Math.floor(difference / 60000);
-    const days =
-        Math.floor(totalMinutes / 1440);
-    const hours =
-        Math.floor(
-            (totalMinutes % 1440) / 60
-        );
-    const minutes =
-        totalMinutes % 60;
-    document.getElementById("days").innerText =
-        days;
-    document.getElementById("hours").innerText =
-        hours;
-    document.getElementById("minutes").innerText =
-        minutes;
+/* إنشاء الورود */
+function createFlowers() {
+    const container = document.getElementById("flowers");
+    container.innerHTML = "";
+    const positions = [8, 20, 32, 47, 62, 75, 88];
+    positions.forEach((position, index) => {
+        const flower = document.createElement("div");
+        flower.className = "flower";
+        flower.style.left = position + "%";
+        flower.style.animationDelay =
+            (index * 0.35 + 3) + "s";
+        flower.innerHTML = `
+            <div class="rose"></div>
+            <div class="stem"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+        `;
+        container.appendChild(flower);
+    });
 }
-updateCounter();
-setInterval(updateCounter,60000);
-/* =========================
-   السؤال التفاعلي
-========================= */
-function answer(text){
-    const box =
-        document.getElementById("answer");
-    box.innerText =
-        "اختيار حلو... " + text;
-    box.style.display =
-        "block";
+/* التشغيل */
+function startScene() {
+    createStars();
+    createFlowers();
 }
-/* =========================
-   الرسالة المخفية
-========================= */
-function showSecret(){
-    const secret =
-        document.getElementById("secret");
-    if(secret.style.display === "block"){
-        secret.style.display =
-            "none";
-    }else{
-        secret.style.display =
-            "block";
-    }
-}
-/* =========================
-   القلب ❤️
-========================= */
-function showLove(){
-    const message =
-        document.getElementById("loveMessage");
-    message.classList.toggle("show");
+startScene();
+/* إعادة المشهد */
+function restartScene() {
+    const poem = document.querySelector(".poem-box");
+    const intro = document.querySelector(".intro");
+    const moon = document.querySelector(".moon");
+    poem.style.animation = "none";
+    intro.style.animation = "none";
+    moon.style.animation = "none";
+    void poem.offsetWidth;
+    poem.style.animation = "poemAppear 2s 5s forwards";
+    intro.style.animation = "introFade 3s forwards";
+    moon.style.animation = "moonAppear 2s 2s forwards";
+    createStars();
+    createFlowers();
 }
 </script>
 </body>
