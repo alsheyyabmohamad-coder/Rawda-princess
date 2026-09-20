@@ -4,22 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>روضة | الحكاية التي لا تنتهي 👑</title>
+<title>Rawda | Princess 👑</title>
 
 <style>
-:root{
-    --navy:#020914;
-    --navy2:#06182a;
-    --navy3:#0a2942;
-    --blue:#123e5e;
-    --burgundy:#4a1020;
-    --burgundy2:#68172b;
-    --gold:#d6b477;
-    --gold2:#ead8b8;
-    --white:#f7f5f1;
-    --text:#cbd6df;
-    --muted:#8d9dac;
-}
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap');
 
 *{
     box-sizing:border-box;
@@ -32,78 +20,47 @@ html{
 }
 
 body{
+    font-family:"Cairo",sans-serif;
+    color:#fff;
     min-height:100vh;
     overflow-x:hidden;
-    color:var(--white);
-    font-family:Arial,Tahoma,sans-serif;
-
     background:
-        radial-gradient(circle at 15% 10%,rgba(18,62,94,.42),transparent 28%),
-        radial-gradient(circle at 85% 70%,rgba(18,62,94,.30),transparent 30%),
-        radial-gradient(circle at 70% 20%,rgba(74,16,32,.18),transparent 25%),
-        linear-gradient(135deg,var(--navy),#03111f,#071b2d);
+        radial-gradient(circle at 15% 10%,rgba(49,69,130,.55),transparent 32%),
+        radial-gradient(circle at 90% 20%,rgba(80,15,45,.5),transparent 30%),
+        linear-gradient(145deg,#050b20 0%,#0a1431 48%,#260914 100%);
 }
 
-button{
-    font-family:inherit;
-}
+/* ================= BACKGROUND ================= */
 
-.container{
-    width:min(1050px,92%);
-    margin:auto;
+#background{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
 }
-
-section{
-    padding:90px 0;
-}
-
-.title{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.title h2{
-    color:var(--gold2);
-    font-size:clamp(30px,5vw,45px);
-    margin-bottom:10px;
-}
-
-.title p{
-    color:var(--muted);
-    line-height:1.8;
-}
-
-/* =========================
-   STARS
-========================= */
 
 .star{
-    position:fixed;
-    width:2px;
-    height:2px;
+    position:absolute;
+    width:3px;
+    height:3px;
     border-radius:50%;
-    background:white;
-    opacity:.5;
-    pointer-events:none;
-    z-index:-1;
-    animation:twinkle 3s infinite alternate;
+    background:#fff;
+    box-shadow:0 0 8px #fff;
+    animation:twinkle 2s infinite alternate;
 }
 
 @keyframes twinkle{
-    from{opacity:.15;transform:scale(.7)}
-    to{opacity:.9;transform:scale(1.4)}
+    from{opacity:.2;transform:scale(.5)}
+    to{opacity:1;transform:scale(1.3)}
 }
-
-/* =========================
-   FLOATING HEARTS
-========================= */
 
 .float{
     position:fixed;
-    bottom:-60px;
+    bottom:-50px;
     pointer-events:none;
-    z-index:20;
-    animation:floatUp 8s linear forwards;
+    z-index:50;
+    animation:floatUp 7s linear forwards;
 }
 
 @keyframes floatUp{
@@ -113,40 +70,75 @@ section{
     }
     10%{opacity:1}
     100%{
-        transform:translateY(-110vh) rotate(360deg);
+        transform:translateY(-115vh) rotate(360deg);
         opacity:0;
     }
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
-.btn{
-    border:1px solid rgba(214,180,119,.25);
-    color:white;
-    background:linear-gradient(135deg,#071d32,#123957);
-    padding:14px 25px;
-    border-radius:17px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:bold;
-    transition:.25s;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+.spark{
+    position:fixed;
+    z-index:9999;
+    pointer-events:none;
+    animation:sparkFly 1.5s ease-out forwards;
 }
 
-.btn:hover{
-    transform:translateY(-4px);
-    background:linear-gradient(135deg,#0b2945,#174665);
+@keyframes sparkFly{
+    0%{
+        opacity:1;
+        transform:translate(0,0) scale(.6);
+    }
+    100%{
+        opacity:0;
+        transform:translate(
+            calc((var(--x) - 50) * 1vw),
+            calc((var(--y) - 50) * 1vh)
+        ) scale(1.4);
+    }
 }
 
-.btn:active{
-    transform:scale(.94);
+/* ================= GENERAL ================= */
+
+.wrapper{
+    width:min(1050px,92%);
+    margin:auto;
+    position:relative;
+    z-index:2;
 }
 
-/* =========================
-   HERO
-========================= */
+section{
+    padding:100px 0;
+}
+
+.card{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:32px;
+    padding:40px 25px;
+    backdrop-filter:blur(18px);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.3),
+        inset 0 0 40px rgba(255,255,255,.025);
+}
+
+.title{
+    text-align:center;
+    color:#dce5ff;
+    font-size:clamp(28px,6vw,44px);
+    margin-bottom:25px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#b8c7e9;
+    line-height:2;
+    margin-bottom:25px;
+}
+
+button{
+    font-family:"Cairo",sans-serif;
+}
+
+/* ================= HERO ================= */
 
 .hero{
     min-height:100vh;
@@ -156,1190 +148,914 @@ section{
     text-align:center;
 }
 
-.heroBox{
+.hero-card{
     width:100%;
     padding:65px 25px;
-    border-radius:40px;
-
-    background:
-        linear-gradient(145deg,
-        rgba(8,31,52,.92),
-        rgba(3,17,30,.88));
-
-    border:1px solid rgba(214,180,119,.16);
-    box-shadow:0 35px 100px rgba(0,0,0,.45);
-    backdrop-filter:blur(15px);
 }
 
-.label{
-    display:inline-block;
-    padding:8px 18px;
-    border-radius:30px;
-    color:var(--gold);
-    border:1px solid rgba(214,180,119,.2);
-    background:rgba(214,180,119,.05);
-    margin-bottom:25px;
+.crown{
+    font-size:75px;
+    animation:crownGlow 2s infinite alternate;
+}
+
+@keyframes crownGlow{
+    from{filter:drop-shadow(0 0 5px gold)}
+    to{filter:drop-shadow(0 0 28px gold)}
 }
 
 .hero h1{
-    font-size:clamp(65px,14vw,120px);
-    line-height:1;
-    margin-bottom:15px;
-
-    background:linear-gradient(
-        90deg,
-        #fff,
-        var(--gold),
-        #c4d9eb,
-        #fff
-    );
-
-    background-size:200%;
+    font-size:clamp(65px,15vw,125px);
+    background:linear-gradient(90deg,#fff,#aebfff,#fff);
     -webkit-background-clip:text;
-    background-clip:text;
     color:transparent;
-
-    animation:shine 5s linear infinite;
-}
-
-@keyframes shine{
-    to{background-position:200%}
+    margin:5px 0;
 }
 
 .hero h2{
-    color:#dce5ed;
-    margin-bottom:20px;
+    color:#b9c8ff;
     font-size:28px;
 }
 
 .hero p{
-    max-width:680px;
-    margin:0 auto 30px;
-    color:#aebdca;
+    color:#c4cbe0;
+    max-width:600px;
+    margin:25px auto;
     line-height:2;
-    font-size:18px;
 }
 
-/* =========================
-   CARDS
-========================= */
+.btn{
+    border:0;
+    cursor:pointer;
+    color:white;
+    padding:14px 27px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#243b82,#5c1838);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 10px 35px rgba(30,50,120,.3);
+    transition:.25s;
+    font-weight:800;
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 15px 45px rgba(40,70,160,.45);
+}
+
+.btn:active{
+    transform:scale(.95);
+}
+
+/* ================= LOVE BUTTON ================= */
+
+.big-heart{
+    text-align:center;
+}
+
+.heart-button{
+    border:0;
+    background:none;
+    font-size:100px;
+    cursor:pointer;
+    filter:drop-shadow(0 0 20px rgba(255,80,130,.35));
+    transition:.15s;
+}
+
+.heart-button:hover{
+    transform:scale(1.1);
+}
+
+.heart-button:active{
+    transform:scale(.8);
+}
+
+.counter{
+    color:#bfcaff;
+    font-size:22px;
+    margin-top:15px;
+}
+
+.message{
+    min-height:32px;
+    margin-top:20px;
+    color:#d5dcff;
+    font-weight:700;
+}
+
+/* ================= CARDS ================= */
 
 .grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:18px;
 }
 
-.card{
-    min-height:220px;
-    padding:30px 20px;
-    border-radius:28px;
+.option{
+    padding:28px 15px;
     text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.1);
     cursor:pointer;
-
-    background:
-        linear-gradient(145deg,
-        rgba(9,36,59,.9),
-        rgba(4,21,36,.88));
-
-    border:1px solid rgba(214,180,119,.11);
     transition:.3s;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(214,180,119,.3);
+.option:hover{
+    transform:translateY(-7px);
+    background:rgba(45,65,130,.2);
 }
 
-.icon{
-    font-size:50px;
-    margin-bottom:15px;
+.option .icon{
+    font-size:42px;
+    display:block;
+    margin-bottom:10px;
 }
 
-.card h3{
-    color:var(--gold);
-    margin-bottom:12px;
+.option p{
+    color:#c6cde2;
+    font-size:14px;
 }
 
-.card p{
-    color:#a5b4c1;
-    line-height:1.9;
-}
+/* ================= QUESTIONS ================= */
 
-/* =========================
-   MESSAGE MACHINE
-========================= */
-
-.machine{
-    max-width:850px;
-    margin:auto;
-    padding:35px;
-    border-radius:32px;
+.question-box{
     text-align:center;
-
-    background:
-        linear-gradient(145deg,
-        rgba(8,34,56,.9),
-        rgba(4,21,36,.86));
-
-    border:1px solid rgba(214,180,119,.12);
-}
-
-.screen{
-    min-height:150px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:25px;
-    margin-bottom:25px;
-    border-radius:23px;
-
-    background:rgba(1,10,18,.55);
-    border:1px solid rgba(120,160,190,.1);
-
-    color:#dbe4eb;
-    font-size:18px;
-    line-height:2;
-}
-
-.buttonRow{
-    display:flex;
-    gap:12px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-/* =========================
-   QUIZ
-========================= */
-
-.quiz{
-    max-width:800px;
-    margin:auto;
-    padding:35px;
-    border-radius:32px;
-
-    background:
-        linear-gradient(145deg,
-        rgba(8,34,56,.9),
-        rgba(4,21,36,.86));
-
-    border:1px solid rgba(214,180,119,.11);
-}
-
-.progress{
-    width:100%;
-    height:8px;
-    background:#061321;
-    border-radius:20px;
-    overflow:hidden;
-    margin-bottom:25px;
-}
-
-.progressFill{
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#123e5e,var(--gold));
-    transition:.4s;
 }
 
 .question{
-    text-align:center;
-    font-size:21px;
-    line-height:1.8;
-    margin-bottom:25px;
+    color:#e8ecff;
+    font-size:24px;
+    margin:20px 0;
 }
 
 .answers{
-    display:grid;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
     gap:12px;
 }
 
 .answer{
-    border:1px solid rgba(214,180,119,.1);
-    background:rgba(7,28,46,.8);
+    border:1px solid rgba(255,255,255,.15);
     color:white;
-    padding:15px;
-    border-radius:16px;
+    background:rgba(255,255,255,.06);
+    border-radius:50px;
+    padding:13px 22px;
     cursor:pointer;
-    transition:.2s;
+    transition:.25s;
 }
 
 .answer:hover{
-    background:#103957;
-    transform:translateY(-2px);
+    background:rgba(45,65,130,.35);
+    transform:translateY(-3px);
 }
 
-.quizResult{
-    text-align:center;
-    color:var(--gold);
-    min-height:45px;
-    margin-top:20px;
-    line-height:1.8;
+.answer:active{
+    transform:scale(.95);
 }
 
-/* =========================
-   METER
-========================= */
+.result{
+    margin-top:22px;
+    min-height:35px;
+    color:#bbc9ff;
+    font-weight:700;
+}
+
+/* ================= METERS ================= */
+
+.meter-wrap{
+    margin:30px 0;
+}
+
+.meter-label{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    color:#d4daf0;
+}
 
 .meter{
-    max-width:850px;
-    margin:auto;
-    text-align:center;
-    padding:40px 25px;
-    border-radius:35px;
-
-    background:
-        linear-gradient(145deg,
-        rgba(8,34,56,.9),
-        rgba(4,21,36,.86));
-
-    border:1px solid rgba(214,180,119,.12);
-}
-
-.infinity{
-    font-size:120px;
-    line-height:1;
-    background:linear-gradient(135deg,var(--gold),#bdd5e8,#7c9db8);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    50%{transform:scale(1.08)}
-}
-
-.percent{
-    font-size:45px;
-    color:var(--gold);
-    font-weight:bold;
-    margin:15px;
-}
-
-.bar{
-    max-width:600px;
-    height:14px;
-    margin:20px auto;
-    background:#061321;
-    border-radius:20px;
+    height:22px;
+    background:rgba(255,255,255,.08);
+    border-radius:50px;
     overflow:hidden;
 }
 
 .fill{
-    width:0;
+    width:0%;
     height:100%;
-    background:linear-gradient(
-        90deg,
-        #123e5e,
-        var(--burgundy2),
-        var(--gold)
-    );
-    transition:.5s;
+    border-radius:50px;
+    transition:1s;
 }
 
-.meterText{
-    color:#a8b6c2;
-    line-height:2;
-    margin-bottom:20px;
+.hate-fill{
+    background:linear-gradient(90deg,#682044,#321020);
 }
 
-/* =========================
-   SECRET BOX
-========================= */
-
-.secretGrid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+.love-fill{
+    background:linear-gradient(90deg,#263c8d,#7d294e);
 }
 
-.secret{
-    min-height:230px;
-    padding:30px;
-    border-radius:28px;
+.number{
     text-align:center;
-    cursor:pointer;
-
-    background:
-        linear-gradient(145deg,
-        rgba(9,35,57,.9),
-        rgba(4,21,36,.86));
-
-    border:1px solid rgba(214,180,119,.1);
-    transition:.3s;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    margin-top:12px;
+    font-size:24px;
+    color:#c5d0ff;
 }
 
-.secret:hover{
-    transform:translateY(-8px);
-    border-color:rgba(214,180,119,.27);
+/* ================= POEM ================= */
+
+.poem{
+    font-family:"Amiri",serif;
+    text-align:center;
+    font-size:25px;
+    line-height:2.2;
+    color:#e6eaff;
 }
 
-.secretIcon{
-    font-size:50px;
+.poem + .poem{
+    margin-top:45px;
+    padding-top:35px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.poem-title{
+    font-family:"Cairo",sans-serif;
+    font-size:20px;
+    color:#aebeff;
     margin-bottom:15px;
 }
 
-.secret h3{
-    color:var(--gold);
-    margin-bottom:10px;
-}
+/* ================= SECRET ================= */
 
-.secret p{
-    color:#a5b4c1;
-    line-height:1.9;
-}
-
-/* =========================
-   STAR GAME
-========================= */
-
-.starGame{
-    max-width:850px;
-    margin:auto;
-    padding:35px;
-    border-radius:35px;
+.secret{
     text-align:center;
-
-    background:
-        linear-gradient(145deg,
-        rgba(7,32,53,.92),
-        rgba(3,18,31,.88));
-
-    border:1px solid rgba(214,180,119,.11);
 }
 
-.starField{
-    height:320px;
-    margin-top:20px;
+.secret-text{
+    display:none;
+    margin-top:25px;
+    padding:25px;
     border-radius:25px;
-    position:relative;
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(18,62,94,.25),
-            transparent 60%
-        ),
-        #020a13;
-}
-
-.hiddenStar{
-    position:absolute;
-    font-size:25px;
-    cursor:pointer;
-    opacity:.6;
-    transition:.2s;
-}
-
-.hiddenStar:hover{
-    transform:scale(1.5);
-    opacity:1;
-}
-
-.starResult{
-    color:var(--gold);
-    min-height:45px;
-    margin-top:15px;
-    line-height:1.8;
-}
-
-/* =========================
-   POEM
-========================= */
-
-.poemBox{
-    max-width:900px;
-    margin:auto;
-    padding:50px 25px;
-    border-radius:38px;
-    text-align:center;
-
-    background:
-        linear-gradient(145deg,
-        rgba(8,34,56,.92),
-        rgba(4,21,36,.87));
-
-    border:1px solid rgba(214,180,119,.13);
-}
-
-.poemTitle{
-    color:var(--gold);
-    font-size:28px;
-    margin-bottom:25px;
-}
-
-.poem{
-    font-family:Georgia,"Times New Roman",serif;
-    color:#e2e9ef;
-    font-size:25px;
+    background:rgba(35,52,115,.2);
+    border:1px solid rgba(160,180,255,.15);
     line-height:2.2;
+    animation:appear .6s ease;
 }
 
-.poem span{
-    color:var(--gold);
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-/* =========================
-   FINAL
-========================= */
+/* ================= FINAL ================= */
 
 .final{
-    min-height:90vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     text-align:center;
+    padding-bottom:130px;
 }
 
-.finalBox{
-    max-width:850px;
-    padding:55px 30px;
-    border-radius:40px;
+.final-heart{
+    font-size:85px;
+    animation:pulse 1.5s infinite;
+}
 
-    background:
-        linear-gradient(145deg,
-        rgba(8,34,56,.9),
-        rgba(4,21,36,.86));
-
-    border:1px solid rgba(214,180,119,.13);
+@keyframes pulse{
+    50%{transform:scale(1.15)}
 }
 
 .final h2{
-    font-size:clamp(42px,7vw,72px);
-    margin-bottom:25px;
-
-    background:linear-gradient(
-        90deg,
-        #fff,
-        var(--gold),
-        #c3d8e8
-    );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+    color:#c4d0ff;
+    font-size:38px;
+    margin:20px 0;
 }
 
 .final p{
-    color:#b7c4cf;
-    font-size:18px;
-    line-height:2.2;
-}
-
-.finalWord{
-    margin-top:30px;
-    color:var(--gold);
-    font-family:Georgia,serif;
-    font-size:38px;
-    line-height:1.8;
-}
-
-/* =========================
-   POPUP
-========================= */
-
-.popup{
-    position:fixed;
-    inset:0;
-    z-index:500;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    background:rgba(0,5,12,.82);
-    backdrop-filter:blur(10px);
-
-    opacity:0;
-    pointer-events:none;
-
-    transition:.3s;
-}
-
-.popup.show{
-    opacity:1;
-    pointer-events:auto;
-}
-
-.popupBox{
-    width:min(600px,100%);
-    padding:40px 25px;
-    text-align:center;
-    border-radius:32px;
-
-    background:
-        linear-gradient(145deg,#071c30,#041322);
-
-    border:1px solid rgba(214,180,119,.2);
-
-    transform:scale(.8);
-    transition:.3s;
-}
-
-.popup.show .popupBox{
-    transform:scale(1);
-}
-
-.popupBox h3{
-    color:var(--gold);
-    font-size:28px;
-    margin-bottom:18px;
-}
-
-.popupBox p{
-    color:#c4d0da;
+    color:#b9c0d6;
     line-height:2;
 }
 
-/* =========================
-   SPARKS
-========================= */
+/* ================= MOBILE ================= */
 
-.spark{
-    position:fixed;
-    z-index:1000;
-    pointer-events:none;
-    font-size:25px;
-    animation:spark 1.3s forwards;
-}
+@media(max-width:700px){
 
-@keyframes spark{
-    from{
-        opacity:1;
-        transform:translate(0,0) scale(1);
+    section{
+        padding:65px 0;
     }
-    to{
-        opacity:0;
-        transform:
-            translate(var(--x),var(--y))
-            scale(.1);
+
+    .card{
+        padding:28px 16px;
     }
-}
 
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:750px){
-
-    .grid,
-    .secretGrid{
+    .grid{
         grid-template-columns:1fr;
-    }
-
-    .heroBox{
-        padding:45px 20px;
-    }
-
-    .machine,
-    .quiz,
-    .meter,
-    .starGame,
-    .poemBox,
-    .finalBox{
-        padding:30px 20px;
-    }
-
-    .infinity{
-        font-size:90px;
     }
 
     .poem{
         font-size:21px;
     }
+
+    .question{
+        font-size:20px;
+    }
 }
 </style>
 </head>
 
-
 <body>
 
-<div class="container">
+<div id="background"></div>
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<div class="wrapper">
+
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-<div class="heroBox">
+<div class="card hero-card">
 
-<div class="label">
-🔐 ملف خاص — لروضة فقط
-</div>
+    <div class="crown">👑</div>
 
-<h1>
-روضة
-</h1>
+    <h1>روضة</h1>
 
-<h2>
-الحكاية التي لا تشبه غيرها 👑
-</h2>
+    <h2>My Princess 🤍</h2>
 
-<p>
-مش رح أطلب منكِ تصدقي كل كلمة هون...
-خلي الأيام هي اللي تحكم.
-</p>
+    <p>
+        هذا المكان معمول لواحدة إلها مكان مختلف...
+        <br>
+        بدون مبالغة، وبدون كلام كثير.
+        <br>
+        بس شوية أشياء بتستاهلها البرنسس.
+    </p>
 
-<button class="btn" id="start">
-ابدئي الحكاية ❤️
-</button>
+    <button class="btn" id="startBtn">
+        ادخلي يا برنسس ✨
+    </button>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     THREE CARDS
-===================================================== -->
+<!-- ================= HEART ================= -->
 
 <section>
 
-<div class="title">
+<div class="card big-heart">
 
-<h2>
-ثلاث أشياء لازم تعرفيها
-</h2>
+    <h2 class="title">أول لعبة ❤️</h2>
 
-<p>
-اضغطي على كل واحدة 👀
-</p>
+    <p class="subtitle">
+        كل ضغطة إلها قلب...
+        جربي تشوفي وين بوصل العداد.
+    </p>
 
-</div>
+    <button class="heart-button" id="heartBtn">
+        ❤️
+    </button>
 
-<div class="grid">
+    <div class="counter">
+        القلوب: <span id="heartCount">0</span>
+    </div>
 
-<div class="card" id="card1">
-
-<div class="icon">👑</div>
-
-<h3>
-روضة
-</h3>
-
-<p id="cardText1">
-اضغطي لتعرفي ليش الاسم هذا مختلف.
-</p>
-
-</div>
-
-
-<div class="card" id="card2">
-
-<div class="icon">❤️</div>
-
-<h3>
-القلب
-</h3>
-
-<p id="cardText2">
-اضغطي لتعرفي شو فيه.
-</p>
-
-</div>
-
-
-<div class="card" id="card3">
-
-<div class="icon">♾️</div>
-
-<h3>
-الحكاية
-</h3>
-
-<p id="cardText3">
-اضغطي لتعرفي كيف بشوفها.
-</p>
-
-</div>
+    <div class="message" id="heartMessage"></div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     MESSAGE MACHINE
-===================================================== -->
+<!-- ================= THREE CHOICES ================= -->
 
 <section>
 
-<div class="title">
+<div class="card">
 
-<h2>
-🎰 ماكينة الرسائل
-</h2>
+    <h2 class="title">اختاري شعورك 👑</h2>
 
-<p>
-كل كبسة ممكن تطلع شيء مختلف.
-</p>
+    <p class="subtitle">
+        بدون إجابة صح أو غلط...
+        اختاري اللي بتحسيه.
+    </p>
 
-</div>
+    <div class="grid">
 
-<div class="machine">
+        <div class="option" data-message="إذن اليوم بدنا نخليها ليلة هادية وجميلة 🌙">
+            <span class="icon">🌙</span>
+            هدوء
+            <p>ليلة هادية بعيد عن كل شيء</p>
+        </div>
 
-<div class="screen" id="screen">
-اضغطي الزر وخلي الحظ يختار الرسالة 😂❤️
-</div>
+        <div class="option" data-message="ضحكة البرنسس إلها مكان خاص هون 😂🤍">
+            <span class="icon">😂</span>
+            ضحكة
+            <p>نرمي الزعل ونعطي الضحكة فرصة</p>
+        </div>
 
-<div class="buttonRow">
+        <div class="option" data-message="إذن اليوم يوم البرنسس 👑✨">
+            <span class="icon">👑</span>
+            دلال
+            <p>اليوم إلك إنتِ</p>
+        </div>
 
-<button class="btn" id="randomBtn">
-رسالة عشوائية 🎲
-</button>
+    </div>
 
-<button class="btn" id="specialBtn">
-رسالة خاصة 👑
-</button>
-
-</div>
+    <div class="message" id="choiceMessage"></div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     QUIZ
-===================================================== -->
+<!-- ================= QUESTIONS ================= -->
 
 <section>
 
-<div class="title">
+<div class="card question-box">
 
-<h2>
-🧠 قديش بتعرفي محمد؟
-</h2>
+    <h2 class="title">سؤال للبرنسس 💭</h2>
 
-<p>
-ثلاث أسئلة فقط.
-</p>
+    <div class="question" id="questionText">
+        لو كان قلبك اليوم مكان... وين بتحبي يكون؟
+    </div>
 
-</div>
+    <div class="answers" id="answers">
 
-<div class="quiz">
+        <button class="answer" data-answer="مكان هادي 🌙">
+            🌙 مكان هادي
+        </button>
 
-<div class="progress">
+        <button class="answer" data-answer="مكان مليان ضحك 😂">
+            😂 مكان مليان ضحك
+        </button>
 
-<div class="progressFill" id="progress">
-</div>
+        <button class="answer" data-answer="مكان فيه شخص بتحبيه 🤍">
+            🤍 مكان فيه شخص بتحبيه
+        </button>
 
-</div>
+    </div>
 
-<div class="question" id="question">
-جاهزة؟ 👀
-</div>
-
-<div class="answers" id="answers">
-</div>
-
-<div class="quizResult" id="quizResult">
-</div>
+    <div class="result" id="questionResult"></div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     LOVE METER
-===================================================== -->
+<!-- ================= METERS ================= -->
 
 <section>
 
-<div class="title">
+<div class="card">
 
-<h2>
-❤️ عداد الحب
-</h2>
+    <h2 class="title">عدادات خاصة 👑</h2>
 
-<p>
-خلينا نحاول نحسب المستحيل.
-</p>
+    <div class="meter-wrap">
 
-</div>
+        <div class="meter-label">
+            <span>الزعل</span>
+            <span id="sadNumber">100%</span>
+        </div>
 
-<div class="meter">
+        <div class="meter">
+            <div class="fill hate-fill" id="sadFill"></div>
+        </div>
 
-<div class="infinity">
-∞
-</div>
+    </div>
 
-<div class="percent" id="percent">
-0%
-</div>
+    <button class="btn" id="reduceSadBtn">
+        خلينا ننقص الزعل 🤍
+    </button>
 
-<div class="bar">
 
-<div class="fill" id="fill">
-</div>
+    <div class="meter-wrap">
 
-</div>
+        <div class="meter-label">
+            <span>الحب</span>
+            <span id="loveNumber">0%</span>
+        </div>
 
-<p class="meterText" id="meterText">
-واضح إن النظام مش جاهز لهالمهمة 😂
-</p>
+        <div class="meter">
+            <div class="fill love-fill" id="loveFill"></div>
+        </div>
 
-<button class="btn" id="loveBtn">
-زيدي النسبة ❤️
-</button>
+    </div>
+
+    <button class="btn" id="loveBtn">
+        زيد الحب ❤️
+    </button>
+
+    <div class="message" id="meterMessage"></div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     SECRET BOXES
-===================================================== -->
+<!-- ================= POEMS ================= -->
 
 <section>
 
-<div class="title">
+<div class="card">
 
-<h2>
-🔐 الصناديق السرية
-</h2>
+    <h2 class="title">شيء مكتوب للبرنسس 🌙</h2>
 
-<p>
-كل صندوق فيه جملة مختلفة.
-</p>
+    <div class="poem">
 
-</div>
+        <div class="poem-title">الأولى</div>
 
-<div class="secretGrid">
+        روضةُ، يا اسمًا إذا مرَّ في فمي
+        <br>
+        تهادى إلى قلبي من الودِّ أنغامُ
+        <br>
+        وما أنتِ عندي عابرَةً في المدى
+        <br>
+        ولكنكِ معنىً في الفؤادِ وإكرامُ
 
-<div class="secret" id="secret1">
-
-<div class="secretIcon">
-🔒
-</div>
-
-<h3>
-الصندوق الأول
-</h3>
-
-<p id="secretText1">
-اضغطي للفتح
-</p>
-
-</div>
+    </div>
 
 
-<div class="secret" id="secret2">
+    <div class="poem">
 
-<div class="secretIcon">
-🌙
-</div>
+        <div class="poem-title">الثانية</div>
 
-<h3>
-الصندوق الثاني
-</h3>
+        وإن سألوا قلبي: من اختارَ موطنًا؟
+        <br>
+        أقولُ: مكانٌ فيهِ روضةُ تسكنُ
+        <br>
+        لها في فؤادي منزلةٌ لا تُبدَّلُ
+        <br>
+        ولا يُطفئُ الأيامَ فيها تغيُّرُ
 
-<p id="secretText2">
-اضغطي للفتح
-</p>
-
-</div>
+    </div>
 
 
-<div class="secret" id="secret3">
+    <div class="poem">
 
-<div class="secretIcon">
-👑
-</div>
+        <div class="poem-title">الثالثة</div>
 
-<h3>
-الصندوق الثالث
-</h3>
+        يا برنسس القلبِ إن ضاقَ خاطركِ
+        <br>
+        فاعلمي بأنكِ في الفؤادِ أمانُ
+        <br>
+        وما كان قصدي يومًا أن أكون سببًا
+        <br>
+        لحزنٍ يمرُّ بكِ أو أحزانُ
 
-<p id="secretText3">
-اضغطي للفتح
-</p>
-
-</div>
+    </div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     STAR GAME
-===================================================== -->
+<!-- ================= SECRET ================= -->
 
 <section>
 
-<div class="title">
+<div class="card secret">
 
-<h2>
-⭐ مهمة النجوم
-</h2>
+    <h2 class="title">رسالة ما بتنفتح إلا إلك 🤍</h2>
 
-<p>
-في خمس نجوم مخبّاية بالمربع.
-</p>
+    <button class="btn" id="secretBtn">
+        افتحيها ✨
+    </button>
 
-</div>
+    <div class="secret-text" id="secretText">
 
-<div class="starGame">
+        روضة يا حياتي يا حلوتي يا أميرة حياتي إنتِ،
+        <br>
+        يا حبي الأول والأخير.
+        <br><br>
 
-<p style="color:#a8b6c2">
-العثور على كل النجوم يفتح الرسالة الأخيرة.
-</p>
+        أنا آسف إني زعلتك...
+        والله زعلك ما بهون علي، وإنتِ عارفة 🤍
+        <br><br>
 
-<div class="starField" id="starField">
-</div>
+        أحيانًا بغلط بشي معك وأنا مش منتبه،
+        بس هذا ما بغيّر مكانتك عندي.
+        <br><br>
 
-<div class="starResult" id="starResult">
-0 / 5 ⭐
-</div>
+        قلبك حلو زيك يا أحلى أميرة بحياتي،
+        والوحيدة اللي إلها هالمكان.
+        <br><br>
 
-</div>
+        وبعدين قربت أجي أطلبك...
+        هانت، أكمن سنة 😂🤍
+        <br><br>
 
-</section>
+        فهالمرة خلينا نخلي الزعل أصغر من اللي بينا.
+        👑🤍
 
-
-<!-- =====================================================
-     POEM
-===================================================== -->
-
-<section>
-
-<div class="title">
-
-<h2>
-📜 شيء من الشعر لروضة
-</h2>
-
-<p>
-لأن بعض الكلام ما بكفيه الكلام العادي.
-</p>
-
-</div>
-
-<div class="poemBox">
-
-<div class="poemTitle">
-إلى روضة، برنسس الحكاية 👑
-</div>
-
-<div class="poem">
-
-روضةُ، يا اسمًا إذا مرَّ في فمي<br>
-تبدّلَ في صوتي الكلامُ إلى شعرِ<br><br>
-
-ويا من لها في القلبِ بيتٌ ومَنزلٌ<br>
-وإن طالَ دربي، ما تبدّلَ لي أمرِ<br><br>
-
-أراكِ البدايةَ حين يبدأُ خاطري<br>
-وأراكِ في آخرِ الحكاياتِ في فكري<br><br>
-
-وما قلتُ يومًا إن الطريقَ سهلٌ لنا<br>
-ولكنني أختارُ الصدقَ في أمري<br><br>
-
-فإن قالوا: <span>الحكاياتُ تنتهي</span><br>
-أقولُ: بعضُ الحكايا تُخلّدُ في العمرِ<br><br>
-
-روضةُ، إن سألوا: من تكونينَ لي؟<br>
-أقولُ: <span>التي صارت من الروحِ جزءًا،</span><br>
-وصارتْ ليَ الدارَا. ❤️
-
-</div>
+    </div>
 
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     FINAL
-===================================================== -->
+<!-- ================= FINAL ================= -->
 
 <section class="final">
 
-<div class="finalBox">
+    <div class="final-heart">💗</div>
 
-<h2>
-ما كانت مرحلة ❤️
-</h2>
+    <h2>روضة... البرنسس 👑</h2>
 
-<p>
-
-روضة...
-
-<br><br>
-
-أنا ما بقدر أعرف شو رح يكتب المستقبل،
-ولا بدي أوعدك بشيء ما بقدر أتحكم فيه.
-
-<br><br>
-
-لكن بقدر أخلي أفعالي مع الوقت
-تحكي عن الكلام اللي قلته.
-
-<br><br>
-
-واليوم، الشيء اللي بعرفه:
-
-<br><br>
-
-<strong style="color:#d6b477">
-إنتِ شخص غالي عليّ،
-ومكانك بحكايتي مش عادي.
-</strong>
-
-</p>
-
-<div class="finalWord">
-
-روضة... 👑❤️
-
-<br>
-
-الحكاية لسه ما خلصت.
-
-<br>
-
-♾️
-
-</div>
-
-<button
-class="btn"
-id="finalBtn"
-style="margin-top:30px">
-
-المفاجأة الأخيرة 🎁
-
-</button>
-
-</div>
+    <p>
+        مش كل شيء يحتاج كلام كثير.
+        <br>
+        بعض الأشخاص يكفي وجودهم.
+        <br><br>
+        وإنتِ بالنسبة إلي...
+        <br>
+        من هالأشخاص.
+    </p>
 
 </section>
-
-</div>
-
-
-<!-- =====================================================
-     POPUP
-===================================================== -->
-
-<div class="popup" id="popup">
-
-<div class="popupBox">
-
-<h3>
-👑 رسالة أخيرة لروضة
-</h3>
-
-<p id="popupText">
-</p>
-
-<br>
-
-<button class="btn" id="closeBtn">
-إغلاق ❤️
-</button>
-
-</div>
 
 </div>
 
 
 <script>
-
-/* =====================================================
-   EVERYTHING STARTS HERE
-===================================================== */
-
 document.addEventListener("DOMContentLoaded", function(){
 
-console.log("RAWDA WEBSITE: READY");
+    console.log("RAWDA WEBSITE: READY");
+
+    /* ================= STARS ================= */
+
+    const background = document.getElementById("background");
+
+    for(let i = 0; i < 120; i++){
+
+        const star = document.createElement("div");
+
+        star.className = "star";
+
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * 100 + "vh";
+        star.style.animationDelay = Math.random() * 3 + "s";
+
+        background.appendChild(star);
+    }
 
 
-/* =====================================================
-   CREATE BACKGROUND STARS
-===================================================== */
+    /* ================= FLOATING HEARTS ================= */
 
-for(let i=0;i<120;i++){
+    function createFloatingHeart(){
 
-    const star=document.createElement("div");
+        const heart = document.createElement("div");
 
-    star.className="star";
+        heart.className = "float";
 
-    star.style.left=
-        Math.random()*100+"vw";
-
-    star.style.top=
-        Math.random()*100+"vh";
-
-    star.style.animationDelay=
-        Math.random()*3+"s";
-
-    document.body.appendChild(star);
-}
-
-
-/* =====================================================
-   FLOATING HEARTS
-===================================================== */
-
-setInterval(function(){
-
-    const heart=document.createElement("div");
-
-    heart.className="float";
-
-    const emojis=[
-        "❤️",
-        "🤍",
-        "💗",
-        "✨",
-        "👑"
-    ];
-
-    heart.textContent=
-        emojis[
-            Math.floor(
-                Math.random()*emojis.length
-            )
+        const emojis = [
+            "❤️",
+            "🤍",
+            "💗",
+            "💖",
+            "✨",
+            "👑"
         ];
 
-    heart.style.left=
-        Math.random()*100+"vw";
+        heart.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
 
-    heart.style.fontSize=
-        (15+Math.random()*20)+"px";
+        heart.style.left = Math.random() * 100 + "vw";
 
-    document.body.appendChild(heart);
+        heart.style.fontSize =
+            (15 + Math.random() * 25) + "px";
 
-    setTimeout(function(){
-        heart.remove();
-    },8000);
-
-},1300);
-
-
-/* =====================================================
-   CELEBRATION
-===================================================== */
-
-function celebrate(amount){
-
-    for(let i=0;i<amount;i++){
+        document.body.appendChild(heart);
 
         setTimeout(function(){
+            heart.remove();
+        },7500);
+    }
 
-            const spark=
+    setInterval(createFloatingHeart,1200);
+
+
+    /* ================= CELEBRATION ================= */
+
+    function celebrate(amount){
+
+        for(let i = 0; i < amount; i++){
+
+            setTimeout(function(){
+
+                const spark = document.createElement("div");
+
+                spark.className = "spark";
+
+                const emojis = [
+                    "❤️",
+                    "💗",
+                    "✨",
+                    "👑",
+                    "🤍"
+                ];
+
+                spark.textContent =
+                    emojis[Math.floor(Math.random() * emojis.length)];
+
+                spark.style.left =
+                    (20 + Math.random() * 60) + "vw";
+
+                spark.style.top =
+                    (35 + Math.random() * 30) + "vh";
+
+                spark.style.fontSize =
+                    (18 + Math.random() * 28) + "px";
+
+                spark.style.setProperty(
+                    "--x",
+                    Math.random() * 100
+                );
+
+                spark.style.setProperty(
+                    "--y",
+                    Math.random() * 100
+                );
+
+                document.body.appendChild(spark);
+
+                setTimeout(function(){
+                    spark.remove();
+                },1500);
+
+            },i * 50);
+        }
+    }
+
+
+    /* ================= START BUTTON ================= */
+
+    document.getElementById("startBtn")
+        .addEventListener("click",function(){
+
+            celebrate(25);
+
+            document.getElementById("heartBtn")
+                .scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+        });
+
+
+    /* ================= HEART GAME ================= */
+
+    let heartCount = 0;
+
+    const heartBtn =
+        document.getElementById("heartBtn");
+
+    heartBtn.addEventListener("click",function(){
+
+        heartCount++;
+
+        document.getElementById("heartCount")
+            .textContent = heartCount;
+
+        const messages = [
+            "هيك أحلى ❤️",
+            "البرنسس ضغطت القلب 👑",
+            "لسا بدنا أكثر 😂❤️",
+            "القلب مبسوط هسا.",
+            "هاي الضغطة إلها حساب خاص 🤍"
+        ];
+
+        document.getElementById("heartMessage")
+            .textContent =
+            messages[
+                Math.floor(Math.random() * messages.length)
+            ];
+
+        celebrate(4);
+    });
+
+
+    /* ================= CHOICES ================= */
+
+    document.querySelectorAll(".option")
+        .forEach(function(option){
+
+            option.addEventListener("click",function(){
+
+                document.getElementById("choiceMessage")
+                    .textContent =
+                    option.dataset.message;
+
+                celebrate(8);
+            });
+
+        });
+
+
+    /* ================= QUESTION ================= */
+
+    document.querySelectorAll(".answer")
+        .forEach(function(button){
+
+            button.addEventListener("click",function(){
+
+                document.getElementById("questionResult")
+                    .textContent =
+                    "اختيار حلو... المهم إن البرنسس تكون مرتاحة 🤍";
+
+                celebrate(7);
+
+                document.querySelectorAll(".answer")
+                    .forEach(function(btn){
+                        btn.disabled = true;
+                        btn.style.opacity = ".45";
+                    });
+
+                button.style.opacity = "1";
+                button.style.borderColor =
+                    "rgba(160,180,255,.7)";
+            });
+
+        });
+
+
+    /* ================= SAD METER ================= */
+
+    let sadness = 100;
+
+    document.getElementById("reduceSadBtn")
+        .addEventListener("click",function(){
+
+            sadness -= 10;
+
+            if(sadness < 0){
+                sadness = 0;
+            }
+
+            document.getElementById("sadFill")
+                .style.width = sadness + "%";
+
+            document.getElementById("sadNumber")
+                .textContent = sadness + "%";
+
+            if(sadness === 0){
+
+                document.getElementById("meterMessage")
+                    .textContent =
+                    "وصلنا للصفر 👑🤍";
+
+                celebrate(20);
+
+            }else{
+
+                document.getElementById("meterMessage")
+                    .textContent =
+                    "نقصنا شوي من الزعل 🤍";
+            }
+
+        });
+
+
+    /* ================= LOVE METER ================= */
+
+    let love = 0;
+
+    document.getElementById("loveBtn")
+        .addEventListener("click",function(){
+
+            love += 10;
+
+            if(love > 100){
+                love = 100;
+            }
+
+            document.getElementById("loveFill")
+                .style.width = love + "%";
+
+            document.getElementById("loveNumber")
+                .textContent = love + "%";
+
+            if(love === 100){
+
+                document.getElementById("meterMessage")
+                    .textContent =
+                    "100%؟ هذا العداد صغير على الحكاية ❤️";
+
+                celebrate(30);
+
+            }else{
+
+                document.getElementById("meterMessage")
+                    .textContent =
+                    "الحب زاد ❤️";
+            }
+
+        });
+
+
+    /
